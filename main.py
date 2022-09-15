@@ -15,7 +15,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 # logger = get_root_logger(level=logging.DEBUG, console_out=True, logName="log.log")
 
 class Arguments(object):
-    def __init__(self) -> None:
+    def __init__(self, log_=True) -> None:
         logger.info(f"This machine has {torch.cuda.device_count()} gpu...")
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.rootpath = "/home/bebin.huang/Code/FoG_prediction/FoG_datasets2" ## dataset path
@@ -30,10 +30,11 @@ class Arguments(object):
         self.output_dir = "./outputs_" + self.level
         self.n1 = 3
         self.n2 = 3
-        self.log()
+        if log_:
+            self.log()
 
     def log(self):
-        logger.info(f"numfolds: {self.numfolds}, bs: {self.batchsize}, epoch: {self.epochs}, lr_drop: {self.lr_drop}, gamma: {self.gamma}, level: {self.level}, [n1, n2]: [{self.n1, self.n2}], seed: {self.seed}")
+        logger.info(f"numfolds: {self.numfolds}, bs: {self.batchsize}, epoch: {self.epochs}, lr_drop: {self.lr_drop}, gamma: {self.gamma}, level: {self.level}, [n1, n2]: [{self.n1}, {self.n2}], seed: {self.seed}")
 
 def main():
     # pdb.set_trace()
@@ -127,7 +128,7 @@ def main():
         total_time_str = str(datetime.timedelta(seconds=int(total_time)))
         logger.info('Fold.{} Training time cost: {}'.format(fold, total_time_str))
 
-        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level)
+        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level, n1=args.n1, n2=args.n2)
         with open(os.path.join(args.output_dir, f"test_fold_{fold:02}.json"), "w") as pf:
             pf.write(json.dumps(performance, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
 
@@ -165,7 +166,7 @@ def test_ckpts():
         model, _ = build_model(in_chan, d_model, num_class, cls_type=cls_type, aux_loss=aux_loss,
                                 cls_weight=None, focal_scaler=focal_scaler)
         model.to(args.device)
-        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level, ckpts=folds[fold])
+        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level, ckpts=folds[fold], n1=args.n1, n2=args.n2)
         # pdb.set_trace()
         with open(os.path.join(args.output_dir, f"test_alone_fold_{fold:02}.json"), "w") as pf:
             pf.write(json.dumps(performance, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
@@ -175,3 +176,9 @@ if __name__ == "__main__":
     # args = Arguments()
     # plot_logs(args.output_dir, log_name="train.txt", fields=("loss", "loss_ce", "loss_NW", "loss_preFoG", "loss_FoG", "class_error"))
     test_ckpts()
+
+    # import glob
+    # args = Arguments(log_=False)
+    # # sam_sel = glob.glob(os.path.join(args.output_dir, "011_003_000_*"))
+    # sam_sel = [p for p in os.listdir(args.output_dir) if p.startswith("011_003_")]
+    # print(sam_sel)

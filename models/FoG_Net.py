@@ -6,8 +6,9 @@ print("Current path is ", os.getcwd())
 import torch
 from torch import nn, Tensor
 import torch.nn.functional as F
-from .backbone import build_backbone
-from .encoder import build_encoder_FoG
+from backbone import build_backbone
+from encoder import build_encoder_FoG
+from positional_encoding import PositionalEncoding
 from typing import Optional
 import sklearn.metrics as metrics
 
@@ -26,11 +27,12 @@ class FoG_Net(nn.Module):
         self.aux_loss = aux_loss
         self.cls_embed = nn.Linear(hidden_dim, num_classes)
         self.cls_token = None
+        self.pos_embed = PositionalEncoding(hidden_dim)
         if cls_type == "cls_token":
-            self.pos_embed = nn.Embedding(hidden_dim, 24+1).weight
+            # self.pos_embed = nn.Embedding(hidden_dim, 24+1).weight
             self.cls_token = torch.randn(hidden_dim, 1)
-        else:
-            self.pos_embed = nn.Embedding(hidden_dim, 24).weight
+        # else:
+        #     self.pos_embed = nn.Embedding(hidden_dim, 24).weight
 
     def forward(self, x):
         # pdb.set_trace()
@@ -40,9 +42,10 @@ class FoG_Net(nn.Module):
         # mask = torch.full().to(features.device)
         bs, c, L = features.shape
         if self.cls_token is not None:
-            cls_token = self.cls_token.repeat(bs, 1, 1).to(features.device) # (1, bs, d_model)
+            cls_token = self.cls_token.repeat(bs, 1, 1).to(features.device) # (bs, L, d_model)
             features = torch.cat((cls_token, features), dim=2) # TODO
-        pos = self.pos_embed.unsqueeze(0).repeat(bs, 1, 1) # not properly
+        # pos = self.pos_embed.unsqueeze(0).repeat(bs, 1, 1) # not properly
+        pos = self.pos_embed(L).unsqueeze(0).repeat(bs, 1, 1)
         hs = self.encoder(features, src_key_padding_mask=None, pos=pos)
         if self.cls_type == "cls_token":
             output_class = self.cls_embed(hs[:, :, 0, :])
@@ -143,7 +146,7 @@ def accuracy(outputs: Tensor, targets: Tensor):
     accu = metrics.accuracy_score(targets.cpu().numpy(), pred.cpu().numpy())
     return accu
 
-def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=None, aux_loss=True, focal_scaler=2):
+def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=torch.ones(3), aux_loss=True, focal_scaler=2):
     
     backbone = build_backbone(in_chan, d_model)
     encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=6, dim_feedforward=4*d_model, 
@@ -158,7 +161,7 @@ def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=None, au
         weight_dict.update(aux_weight_dict)
 
     losses = ["labels"]
-    criterion = SetCriterion(num_class, losses, weight_dict,cls_weight, focal_scaler=focal_scaler)
+    criterion = SetCriterion(num_class, losses, weight_dict, cls_weight, focal_scaler=focal_scaler)
     # criterion.to(device)
     # postprocessor = PostProcess()
     return model, criterion #, postprocessor
@@ -167,6 +170,6 @@ if __name__ == "__main__":
     x = torch.rand(4, 6, 1500)
     pdb.set_trace()
     in_chan, d_model, num_class = x.shape[1], 128, 3
-    model = build(in_chan, d_model, num_class, cls_type="global_ave")
+    model, _ = build(in_chan, d_model, num_class, cls_type="global_ave")
     y = model(x)
     print(x.shape, y["pred_logits"].shape)

@@ -91,7 +91,7 @@ def cal_episode_metrics(targets: np.array, targets_info: list, preds: np.array, 
             total_episodes, episodes[curidx], isDetected, FalseAlarm, PredictMargin))
         detected_FoG += isDetected
         false_alarmed += FalseAlarm
-        forcast_windows[episodes[curidx]] = [detected_FoG, false_alarmed, PredictMargin]
+        forcast_windows[episodes[curidx]] = [isDetected, FalseAlarm, PredictMargin]
 
         curidx += epi_loc.sum()
     return {"detected_FoG": [detected_FoG/1.0, detected_FoG/total_episodes], "false_alarmed": [false_alarmed/1.0, false_alarmed/total_episodes], "total_episodes": total_episodes/1.0, 
@@ -101,10 +101,10 @@ def cal_one_episode(gts: np.array, preds: np.array, n1=3, n2=3, header=""):
     # pdb.set_trace()
     idx_pre, idx_fog = np.argwhere(gts == 1), np.argwhere(gts == 2)
     if idx_pre.shape[0] == 0:
-        logger.warning(header + "This episode does not have pre-FoG stage.")
+        logger.warning(header + "This episode does not have pre-FoG stage, gts = {}".format(str(gts)))
         return False, False, "no pre-FoG"
     if idx_fog.shape[0] == 0:
-        logger.warning(header + "This episode does not have FoG stage.")
+        logger.warning(header + "This episode does not have FoG stage, gts = {}".format(str(gts)))
         return False, False, "no FoG"
     idx_pre, idx_fog = idx_pre[0, 0], idx_fog[0, 0]
     assert np.all(gts[:idx_pre] == 0) and np.all(gts[idx_pre:idx_fog] == 1) and np.all(gts[idx_fog:] == 2), \

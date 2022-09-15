@@ -1,459 +1,459 @@
-2022-09-15 13:15:25,572 - INFO     - main.py              - Line:19   - This machine has 1 gpu...
-2022-09-15 13:15:25,572 - INFO     - main.py              - Line:36   - numfolds: 10, bs: 128, epoch: 100, lr_drop: 30, gamma: 0.5, level: episode, [n1, n2]: [(3, 3)], seed: 10086
-2022-09-15 13:15:25,572 - INFO     - main.py              - Line:142  - in_chan: 6, d_model: 128, num_class: 3, cls_type: cls_token, aux_loss: True
-2022-09-15 13:15:25,574 - INFO     - main.py              - Line:160  - Performing fold 0 validation.
-2022-09-15 13:15:25,760 - INFO     - FoG_dataset.py       - Line:41   - Mode = val, total = 1532, NW = [400, 0.34], preFoG = [264, 0.51], FoG = [868, 0.15]
-2022-09-15 13:15:27,176 - INFO     - test.py              - Line:15   - Computing test metrics, level is episode.
-2022-09-15 13:15:44,590 - INFO     - test.py              - Line:52   - Fold 0, epoch 29 sample level performance: {'accu': 0.7813315926892951, 'sens': [0.4125, 0.7310606060606061, 0.966589861751152], 'prec': [0.8549222797927462, 0.4426605504587156, 0.929125138427464], 'geom': [0.593847994367673, 0.5688687812645989, 0.9476723796239513], 'auc': None, 'f1_score': [0.5564924114671164, 0.5514285714285714, 0.9474872953133823], 'cmat': [[165, 215, 20], [27, 193, 44], [1, 28, 839]]}
-2022-09-15 13:15:44,593 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
-2022-09-15 13:15:44,593 - WARNING  - test.py              - Line:119  - episode 1, name = 003_000_017: predictions only have one step.
-2022-09-15 13:15:44,593 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:15:44,593 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
-2022-09-15 13:15:44,594 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/False, PredictMargin/14.
-2022-09-15 13:15:44,594 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
-2022-09-15 13:15:44,594 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
-2022-09-15 13:15:44,594 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:15:44,594 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
-2022-09-15 13:15:44,594 - WARNING  - test.py              - Line:119  - episode 4, name = 011_000_021: predictions only have one step.
-2022-09-15 13:15:44,594 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/False, PredictMargin/17.
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/5.
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
-2022-09-15 13:15:44,595 - WARNING  - test.py              - Line:119  - episode 7, name = 010_002_002: predictions only have one step.
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/False, PredictMargin/19.
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
-2022-09-15 13:15:44,595 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/True, PredictMargin/16.
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/False, PredictMargin/27.
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
-2022-09-15 13:15:44,596 - WARNING  - test.py              - Line:119  - episode 10, name = 003_001_020: predictions only have one step.
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/23.
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
-2022-09-15 13:15:44,596 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
-2022-09-15 13:15:44,596 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
-2022-09-15 13:15:44,597 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/14.
-2022-09-15 13:15:44,597 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
-2022-09-15 13:15:44,597 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
-2022-09-15 13:15:44,597 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:15:44,597 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
-2022-09-15 13:15:44,597 - WARNING  - test.py              - Line:119  - episode 15, name = 081_001_000: predictions only have one step.
-2022-09-15 13:15:44,597 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/31.
-2022-09-15 13:15:44,597 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
-2022-09-15 13:15:44,597 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/True, PredictMargin/14.
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/True, PredictMargin/6.
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
-2022-09-15 13:15:44,598 - WARNING  - test.py              - Line:119  - episode 18, name = 003_000_002: predictions only have one step.
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/True, PredictMargin/16.
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/16.
-2022-09-15 13:15:44,598 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
-2022-09-15 13:15:44,599 - WARNING  - test.py              - Line:119  - episode 21, name = 011_001_018: predictions only have one step.
-2022-09-15 13:15:44,599 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/False, PredictMargin/17.
-2022-09-15 13:15:44,599 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
-2022-09-15 13:15:44,599 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/24.
-2022-09-15 13:15:44,599 - INFO     - test.py              - Line:57   - Fold 0, epoch 29 episode level performance: {'detected_FoG': [22.0, 1.0], 'false_alarmed': [5.0, 0.22727272727272727], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [1, 0, 7], '010_003_002': [2, 0, 14], '011_003_002': [3, 0, 7], '011_000_021': [4, 0, 17], '006_001_006': [5, 1, 0], '007_000_002': [6, 1, 5], '010_002_002': [7, 1, 19], '011_001_019': [8, 2, 16], '009_002_013': [9, 2, 27], '003_001_020': [10, 2, 13], '082_000_008': [11, 2, 23], '003_001_016': [12, 2, 9], '081_001_004': [13, 2, 14], '082_002_001': [14, 2, 7], '081_001_000': [15, 2, 31], '001_001_005': [16, 3, 14], '009_000_002': [17, 4, 6], '003_000_002': [18, 4, 15], '007_001_006': [19, 5, 16], '007_001_008': [20, 5, 16], '011_001_018': [21, 5, 17], '081_001_003': [22, 5, 24]}}
+2022-09-15 17:48:26,821 - INFO     - main.py              - Line:19   - This machine has 1 gpu...
+2022-09-15 17:48:26,822 - INFO     - main.py              - Line:37   - numfolds: 10, bs: 128, epoch: 100, lr_drop: 30, gamma: 0.5, level: episode, [n1, n2]: [3, 3], seed: 10086
+2022-09-15 17:48:26,823 - INFO     - main.py              - Line:143  - in_chan: 6, d_model: 128, num_class: 3, cls_type: cls_token, aux_loss: True
+2022-09-15 17:48:26,824 - INFO     - main.py              - Line:161  - Performing fold 0 validation.
+2022-09-15 17:48:26,997 - INFO     - FoG_dataset.py       - Line:41   - Mode = val, total = 1532, NW = [400, 0.34], preFoG = [264, 0.51], FoG = [868, 0.15]
+2022-09-15 17:48:28,434 - INFO     - test.py              - Line:15   - Computing test metrics, level is episode.
+2022-09-15 17:48:45,264 - INFO     - test.py              - Line:52   - Fold 0, epoch 29 sample level performance: {'accu': 0.7813315926892951, 'sens': [0.4125, 0.7310606060606061, 0.966589861751152], 'prec': [0.8549222797927462, 0.4426605504587156, 0.929125138427464], 'geom': [0.593847994367673, 0.5688687812645989, 0.9476723796239513], 'auc': None, 'f1_score': [0.5564924114671164, 0.5514285714285714, 0.9474872953133823], 'cmat': [[165, 215, 20], [27, 193, 44], [1, 28, 839]]}
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
+2022-09-15 17:48:45,266 - WARNING  - test.py              - Line:119  - episode 1, name = 003_000_017: predictions only have one step.
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/False, PredictMargin/14.
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
+2022-09-15 17:48:45,266 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
+2022-09-15 17:48:45,266 - WARNING  - test.py              - Line:119  - episode 4, name = 011_000_021: predictions only have one step.
+2022-09-15 17:48:45,266 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/False, PredictMargin/17.
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/5.
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
+2022-09-15 17:48:45,267 - WARNING  - test.py              - Line:119  - episode 7, name = 010_002_002: predictions only have one step.
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/False, PredictMargin/19.
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/True, PredictMargin/16.
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
+2022-09-15 17:48:45,267 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/False, PredictMargin/27.
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
+2022-09-15 17:48:45,268 - WARNING  - test.py              - Line:119  - episode 10, name = 003_001_020: predictions only have one step.
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/23.
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
+2022-09-15 17:48:45,268 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/14.
+2022-09-15 17:48:45,268 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
+2022-09-15 17:48:45,269 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
+2022-09-15 17:48:45,269 - WARNING  - test.py              - Line:119  - episode 15, name = 081_001_000: predictions only have one step.
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/31.
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/True, PredictMargin/14.
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/True, PredictMargin/6.
+2022-09-15 17:48:45,269 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
+2022-09-15 17:48:45,269 - WARNING  - test.py              - Line:119  - episode 18, name = 003_000_002: predictions only have one step.
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/True, PredictMargin/16.
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/16.
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
+2022-09-15 17:48:45,270 - WARNING  - test.py              - Line:119  - episode 21, name = 011_001_018: predictions only have one step.
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/False, PredictMargin/17.
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/24.
+2022-09-15 17:48:45,270 - INFO     - test.py              - Line:57   - Fold 0, epoch 29 episode level performance: {'detected_FoG': [22.0, 1.0], 'false_alarmed': [5.0, 0.22727272727272727], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [True, False, 7], '010_003_002': [True, False, 14], '011_003_002': [True, False, 7], '011_000_021': [True, False, 17], '006_001_006': [True, True, 0], '007_000_002': [True, False, 5], '010_002_002': [True, False, 19], '011_001_019': [True, True, 16], '009_002_013': [True, False, 27], '003_001_020': [True, False, 13], '082_000_008': [True, False, 23], '003_001_016': [True, False, 9], '081_001_004': [True, False, 14], '082_002_001': [True, False, 7], '081_001_000': [True, False, 31], '001_001_005': [True, True, 14], '009_000_002': [True, True, 6], '003_000_002': [True, False, 15], '007_001_006': [True, True, 16], '007_001_008': [True, False, 16], '011_001_018': [True, False, 17], '081_001_003': [True, False, 24]}}
 
 
-2022-09-15 13:15:59,207 - INFO     - test.py              - Line:52   - Fold 0, epoch 59 sample level performance: {'accu': 0.8133159268929504, 'sens': [0.665, 0.5833333333333334, 0.9516129032258065], 'prec': [0.751412429378531, 0.5082508250825083, 0.944], 'geom': [0.706887024592136, 0.5444994471666583, 0.9477988081049487], 'auc': None, 'f1_score': [0.7055702917771882, 0.54320987654321, 0.9477911646586344], 'cmat': [[266, 114, 20], [81, 154, 29], [7, 35, 826]]}
-2022-09-15 13:15:59,208 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
-2022-09-15 13:15:59,208 - WARNING  - test.py              - Line:119  - episode 1, name = 003_000_017: predictions only have one step.
-2022-09-15 13:15:59,208 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:15:59,208 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
-2022-09-15 13:15:59,208 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/True, PredictMargin/12.
-2022-09-15 13:15:59,208 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
-2022-09-15 13:15:59,208 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
-2022-09-15 13:15:59,208 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:15:59,208 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/False, PredictMargin/16.
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/False, PredictMargin/19.
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/False, PredictMargin/17.
-2022-09-15 13:15:59,209 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/False, PredictMargin/24.
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
-2022-09-15 13:15:59,210 - WARNING  - test.py              - Line:119  - episode 10, name = 003_001_020: predictions only have one step.
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
-2022-09-15 13:15:59,210 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
-2022-09-15 13:15:59,210 - WARNING  - test.py              - Line:119  - episode 13, name = 081_001_004: predictions only have one step.
-2022-09-15 13:15:59,210 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/23.
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
-2022-09-15 13:15:59,211 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
-2022-09-15 13:15:59,211 - WARNING  - test.py              - Line:119  - episode 15, name = 081_001_000: predictions only have one step.
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/31.
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/False, PredictMargin/5.
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/True, PredictMargin/3.
-2022-09-15 13:15:59,211 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
-2022-09-15 13:15:59,211 - WARNING  - test.py              - Line:119  - episode 18, name = 003_000_002: predictions only have one step.
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/False, PredictMargin/6.
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/13.
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/False, PredictMargin/17.
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:15:59,212 - INFO     - test.py              - Line:57   - Fold 0, epoch 59 episode level performance: {'detected_FoG': [22.0, 1.0], 'false_alarmed': [3.0, 0.13636363636363635], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [1, 0, 7], '010_003_002': [2, 1, 12], '011_003_002': [3, 1, 7], '011_000_021': [4, 1, 16], '006_001_006': [5, 2, 0], '007_000_002': [6, 2, 3], '010_002_002': [7, 2, 19], '011_001_019': [8, 2, 17], '009_002_013': [9, 2, 24], '003_001_020': [10, 2, 13], '082_000_008': [11, 2, 2], '003_001_016': [12, 2, 9], '081_001_004': [13, 2, 23], '082_002_001': [14, 2, 7], '081_001_000': [15, 2, 31], '001_001_005': [16, 2, 5], '009_000_002': [17, 3, 3], '003_000_002': [18, 3, 15], '007_001_006': [19, 3, 6], '007_001_008': [20, 3, 13], '011_001_018': [21, 3, 17], '081_001_003': [22, 3, 2]}}
+2022-09-15 17:48:59,942 - INFO     - test.py              - Line:52   - Fold 0, epoch 59 sample level performance: {'accu': 0.8133159268929504, 'sens': [0.665, 0.5833333333333334, 0.9516129032258065], 'prec': [0.751412429378531, 0.5082508250825083, 0.944], 'geom': [0.706887024592136, 0.5444994471666583, 0.9477988081049487], 'auc': None, 'f1_score': [0.7055702917771882, 0.54320987654321, 0.9477911646586344], 'cmat': [[266, 114, 20], [81, 154, 29], [7, 35, 826]]}
+2022-09-15 17:48:59,943 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
+2022-09-15 17:48:59,943 - WARNING  - test.py              - Line:119  - episode 1, name = 003_000_017: predictions only have one step.
+2022-09-15 17:48:59,943 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:48:59,943 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
+2022-09-15 17:48:59,943 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/True, PredictMargin/12.
+2022-09-15 17:48:59,943 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
+2022-09-15 17:48:59,943 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/False, PredictMargin/16.
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/False, PredictMargin/19.
+2022-09-15 17:48:59,944 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/False, PredictMargin/17.
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/False, PredictMargin/24.
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
+2022-09-15 17:48:59,945 - WARNING  - test.py              - Line:119  - episode 10, name = 003_001_020: predictions only have one step.
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
+2022-09-15 17:48:59,945 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
+2022-09-15 17:48:59,945 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
+2022-09-15 17:48:59,946 - WARNING  - test.py              - Line:119  - episode 13, name = 081_001_004: predictions only have one step.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/23.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
+2022-09-15 17:48:59,946 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
+2022-09-15 17:48:59,946 - WARNING  - test.py              - Line:119  - episode 15, name = 081_001_000: predictions only have one step.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/31.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/False, PredictMargin/5.
+2022-09-15 17:48:59,946 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/True, PredictMargin/3.
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
+2022-09-15 17:48:59,947 - WARNING  - test.py              - Line:119  - episode 18, name = 003_000_002: predictions only have one step.
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/False, PredictMargin/6.
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/13.
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/False, PredictMargin/17.
+2022-09-15 17:48:59,947 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
+2022-09-15 17:48:59,948 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:48:59,948 - INFO     - test.py              - Line:57   - Fold 0, epoch 59 episode level performance: {'detected_FoG': [22.0, 1.0], 'false_alarmed': [3.0, 0.13636363636363635], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [True, False, 7], '010_003_002': [True, True, 12], '011_003_002': [True, False, 7], '011_000_021': [True, False, 16], '006_001_006': [True, True, 0], '007_000_002': [True, False, 3], '010_002_002': [True, False, 19], '011_001_019': [True, False, 17], '009_002_013': [True, False, 24], '003_001_020': [True, False, 13], '082_000_008': [True, False, 2], '003_001_016': [True, False, 9], '081_001_004': [True, False, 23], '082_002_001': [True, False, 7], '081_001_000': [True, False, 31], '001_001_005': [True, False, 5], '009_000_002': [True, True, 3], '003_000_002': [True, False, 15], '007_001_006': [True, False, 6], '007_001_008': [True, False, 13], '011_001_018': [True, False, 17], '081_001_003': [True, False, 2]}}
 
 
-2022-09-15 13:16:13,535 - INFO     - test.py              - Line:52   - Fold 0, epoch 89 sample level performance: {'accu': 0.8074412532637075, 'sens': [0.6725, 0.5378787878787878, 0.9516129032258065], 'prec': [0.727027027027027, 0.5035460992907801, 0.9386363636363636], 'geom': [0.6992322044039989, 0.5204294049413586, 0.94510236221973], 'auc': None, 'f1_score': [0.6987012987012987, 0.5201465201465201, 0.9450800915331808], 'cmat': [[269, 112, 19], [87, 142, 35], [14, 28, 826]]}
-2022-09-15 13:16:13,536 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
-2022-09-15 13:16:13,536 - WARNING  - test.py              - Line:119  - episode 1, name = 003_000_017: predictions only have one step.
-2022-09-15 13:16:13,536 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:13,536 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
-2022-09-15 13:16:13,536 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
-2022-09-15 13:16:13,537 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/True, PredictMargin/2.
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
-2022-09-15 13:16:13,537 - WARNING  - test.py              - Line:119  - episode 6, name = 007_000_002: predictions only have one step.
-2022-09-15 13:16:13,537 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/True, PredictMargin/3.
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/True, PredictMargin/9.
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
-2022-09-15 13:16:13,538 - WARNING  - test.py              - Line:119  - episode 10, name = 003_001_020: predictions only have one step.
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
-2022-09-15 13:16:13,538 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
-2022-09-15 13:16:13,539 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/8.
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
-2022-09-15 13:16:13,539 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
-2022-09-15 13:16:13,539 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/True, PredictMargin/12.
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/True, PredictMargin/4.
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/True, PredictMargin/7.
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/True, PredictMargin/5.
-2022-09-15 13:16:13,540 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
-2022-09-15 13:16:13,541 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:13,541 - INFO     - test.py              - Line:57   - Fold 0, epoch 89 episode level performance: {'detected_FoG': [22.0, 1.0], 'false_alarmed': [9.0, 0.4090909090909091], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [1, 0, 7], '010_003_002': [2, 1, 0], '011_003_002': [3, 1, 7], '011_000_021': [4, 2, 2], '006_001_006': [5, 3, 0], '007_000_002': [6, 3, 15], '010_002_002': [7, 4, 3], '011_001_019': [8, 4, 15], '009_002_013': [9, 5, 9], '003_001_020': [10, 5, 13], '082_000_008': [11, 5, 2], '003_001_016': [12, 5, 9], '081_001_004': [13, 5, 8], '082_002_001': [14, 5, 7], '081_001_000': [15, 5, 2], '001_001_005': [16, 6, 12], '009_000_002': [17, 7, 4], '003_000_002': [18, 7, 15], '007_001_006': [19, 8, 7], '007_001_008': [20, 8, 15], '011_001_018': [21, 9, 5], '081_001_003': [22, 9, 2]}}
+2022-09-15 17:49:14,586 - INFO     - test.py              - Line:52   - Fold 0, epoch 89 sample level performance: {'accu': 0.8074412532637075, 'sens': [0.6725, 0.5378787878787878, 0.9516129032258065], 'prec': [0.727027027027027, 0.5035460992907801, 0.9386363636363636], 'geom': [0.6992322044039989, 0.5204294049413586, 0.94510236221973], 'auc': None, 'f1_score': [0.6987012987012987, 0.5201465201465201, 0.9450800915331808], 'cmat': [[269, 112, 19], [87, 142, 35], [14, 28, 826]]}
+2022-09-15 17:49:14,587 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
+2022-09-15 17:49:14,587 - WARNING  - test.py              - Line:119  - episode 1, name = 003_000_017: predictions only have one step.
+2022-09-15 17:49:14,587 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:14,587 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
+2022-09-15 17:49:14,587 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
+2022-09-15 17:49:14,588 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/True, PredictMargin/2.
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
+2022-09-15 17:49:14,588 - WARNING  - test.py              - Line:119  - episode 6, name = 007_000_002: predictions only have one step.
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:49:14,588 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/True, PredictMargin/3.
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/True, PredictMargin/9.
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
+2022-09-15 17:49:14,589 - WARNING  - test.py              - Line:119  - episode 10, name = 003_001_020: predictions only have one step.
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:14,589 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
+2022-09-15 17:49:14,590 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/8.
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
+2022-09-15 17:49:14,590 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/True, PredictMargin/12.
+2022-09-15 17:49:14,590 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/True, PredictMargin/4.
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/True, PredictMargin/7.
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/True, PredictMargin/5.
+2022-09-15 17:49:14,591 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
+2022-09-15 17:49:14,592 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:14,592 - INFO     - test.py              - Line:57   - Fold 0, epoch 89 episode level performance: {'detected_FoG': [22.0, 1.0], 'false_alarmed': [9.0, 0.4090909090909091], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [True, False, 7], '010_003_002': [True, True, 0], '011_003_002': [True, False, 7], '011_000_021': [True, True, 2], '006_001_006': [True, True, 0], '007_000_002': [True, False, 15], '010_002_002': [True, True, 3], '011_001_019': [True, False, 15], '009_002_013': [True, True, 9], '003_001_020': [True, False, 13], '082_000_008': [True, False, 2], '003_001_016': [True, False, 9], '081_001_004': [True, False, 8], '082_002_001': [True, False, 7], '081_001_000': [True, False, 2], '001_001_005': [True, True, 12], '009_000_002': [True, True, 4], '003_000_002': [True, False, 15], '007_001_006': [True, True, 7], '007_001_008': [True, False, 15], '011_001_018': [True, True, 5], '081_001_003': [True, False, 2]}}
 
 
-2022-09-15 13:16:27,916 - INFO     - test.py              - Line:52   - Fold 0, epoch 99 sample level performance: {'accu': 0.8054830287206266, 'sens': [0.65, 0.5075757575757576, 0.967741935483871], 'prec': [0.7428571428571429, 0.5056603773584906, 0.916030534351145], 'geom': [0.6948792289723034, 0.5066171622771768, 0.941531285871745], 'auc': None, 'f1_score': [0.6933333333333334, 0.5066162570888468, 0.9411764705882353], 'cmat': [[260, 110, 30], [83, 134, 47], [7, 21, 840]]}
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/False, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
-2022-09-15 13:16:27,917 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
-2022-09-15 13:16:27,917 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/True, PredictMargin/2.
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/1.
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/4.
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/False, PredictMargin/17.
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
-2022-09-15 13:16:27,918 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/True, PredictMargin/8.
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
-2022-09-15 13:16:27,919 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/8.
-2022-09-15 13:16:27,919 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
-2022-09-15 13:16:27,919 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/False, PredictMargin/12.
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/6.
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
-2022-09-15 13:16:27,920 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:27,921 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
-2022-09-15 13:16:27,921 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/13.
-2022-09-15 13:16:27,921 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
-2022-09-15 13:16:27,921 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/False, PredictMargin/17.
-2022-09-15 13:16:27,921 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
-2022-09-15 13:16:27,921 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:27,921 - INFO     - test.py              - Line:57   - Fold 0, epoch 99 episode level performance: {'detected_FoG': [21.0, 0.9545454545454546], 'false_alarmed': [5.0, 0.22727272727272727], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [0, 1, 0], '010_003_002': [1, 2, 0], '011_003_002': [2, 2, 7], '011_000_021': [3, 3, 2], '006_001_006': [4, 4, 1], '007_000_002': [5, 4, 4], '010_002_002': [6, 4, 3], '011_001_019': [7, 4, 17], '009_002_013': [8, 5, 8], '003_001_020': [9, 5, 13], '082_000_008': [10, 5, 2], '003_001_016': [11, 5, 9], '081_001_004': [12, 5, 8], '082_002_001': [13, 5, 7], '081_001_000': [14, 5, 2], '001_001_005': [15, 5, 12], '009_000_002': [16, 5, 3], '003_000_002': [17, 5, 6], '007_001_006': [18, 5, 7], '007_001_008': [19, 5, 13], '011_001_018': [20, 5, 17], '081_001_003': [21, 5, 2]}}
+2022-09-15 17:49:29,004 - INFO     - test.py              - Line:52   - Fold 0, epoch 99 sample level performance: {'accu': 0.8054830287206266, 'sens': [0.65, 0.5075757575757576, 0.967741935483871], 'prec': [0.7428571428571429, 0.5056603773584906, 0.916030534351145], 'geom': [0.6948792289723034, 0.5066171622771768, 0.941531285871745], 'auc': None, 'f1_score': [0.6933333333333334, 0.5066162570888468, 0.9411764705882353], 'cmat': [[260, 110, 30], [83, 134, 47], [7, 21, 840]]}
+2022-09-15 17:49:29,005 - INFO     - test.py              - Line:79   - Current episode is 1/003_000_017
+2022-09-15 17:49:29,005 - INFO     - test.py              - Line:90   - episode 1, name = 003_000_017: isDetected/False, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:49:29,005 - INFO     - test.py              - Line:79   - Current episode is 2/010_003_002
+2022-09-15 17:49:29,005 - INFO     - test.py              - Line:90   - episode 2, name = 010_003_002: isDetected/True, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:49:29,005 - INFO     - test.py              - Line:79   - Current episode is 3/011_003_002
+2022-09-15 17:49:29,005 - WARNING  - test.py              - Line:119  - episode 3, name = 011_003_002: predictions only have one step.
+2022-09-15 17:49:29,005 - INFO     - test.py              - Line:90   - episode 3, name = 011_003_002: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:79   - Current episode is 4/011_000_021
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:90   - episode 4, name = 011_000_021: isDetected/True, FalseAlarm/True, PredictMargin/2.
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:79   - Current episode is 5/006_001_006
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:90   - episode 5, name = 006_001_006: isDetected/True, FalseAlarm/True, PredictMargin/1.
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:79   - Current episode is 6/007_000_002
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:90   - episode 6, name = 007_000_002: isDetected/True, FalseAlarm/False, PredictMargin/4.
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:79   - Current episode is 7/010_002_002
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:90   - episode 7, name = 010_002_002: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:79   - Current episode is 8/011_001_019
+2022-09-15 17:49:29,006 - INFO     - test.py              - Line:90   - episode 8, name = 011_001_019: isDetected/True, FalseAlarm/False, PredictMargin/17.
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:79   - Current episode is 9/009_002_013
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:90   - episode 9, name = 009_002_013: isDetected/True, FalseAlarm/True, PredictMargin/8.
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:79   - Current episode is 10/003_001_020
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:90   - episode 10, name = 003_001_020: isDetected/True, FalseAlarm/False, PredictMargin/13.
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:79   - Current episode is 11/082_000_008
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:90   - episode 11, name = 082_000_008: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:79   - Current episode is 12/003_001_016
+2022-09-15 17:49:29,007 - WARNING  - test.py              - Line:119  - episode 12, name = 003_001_016: predictions only have one step.
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:90   - episode 12, name = 003_001_016: isDetected/True, FalseAlarm/False, PredictMargin/9.
+2022-09-15 17:49:29,007 - INFO     - test.py              - Line:79   - Current episode is 13/081_001_004
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:90   - episode 13, name = 081_001_004: isDetected/True, FalseAlarm/False, PredictMargin/8.
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:79   - Current episode is 14/082_002_001
+2022-09-15 17:49:29,008 - WARNING  - test.py              - Line:119  - episode 14, name = 082_002_001: predictions only have one step.
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:90   - episode 14, name = 082_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:79   - Current episode is 15/081_001_000
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:90   - episode 15, name = 081_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:79   - Current episode is 16/001_001_005
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:90   - episode 16, name = 001_001_005: isDetected/True, FalseAlarm/False, PredictMargin/12.
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:79   - Current episode is 17/009_000_002
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:90   - episode 17, name = 009_000_002: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:49:29,008 - INFO     - test.py              - Line:79   - Current episode is 18/003_000_002
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:90   - episode 18, name = 003_000_002: isDetected/True, FalseAlarm/False, PredictMargin/6.
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:79   - Current episode is 19/007_001_006
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:90   - episode 19, name = 007_001_006: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:79   - Current episode is 20/007_001_008
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:90   - episode 20, name = 007_001_008: isDetected/True, FalseAlarm/False, PredictMargin/13.
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:79   - Current episode is 21/011_001_018
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:90   - episode 21, name = 011_001_018: isDetected/True, FalseAlarm/False, PredictMargin/17.
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:79   - Current episode is 22/081_001_003
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:90   - episode 22, name = 081_001_003: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:29,009 - INFO     - test.py              - Line:57   - Fold 0, epoch 99 episode level performance: {'detected_FoG': [21.0, 0.9545454545454546], 'false_alarmed': [5.0, 0.22727272727272727], 'total_episodes': 22.0, 'forcast_windows': {'003_000_017': [False, True, 0], '010_003_002': [True, True, 0], '011_003_002': [True, False, 7], '011_000_021': [True, True, 2], '006_001_006': [True, True, 1], '007_000_002': [True, False, 4], '010_002_002': [True, False, 3], '011_001_019': [True, False, 17], '009_002_013': [True, True, 8], '003_001_020': [True, False, 13], '082_000_008': [True, False, 2], '003_001_016': [True, False, 9], '081_001_004': [True, False, 8], '082_002_001': [True, False, 7], '081_001_000': [True, False, 2], '001_001_005': [True, False, 12], '009_000_002': [True, False, 3], '003_000_002': [True, False, 6], '007_001_006': [True, False, 7], '007_001_008': [True, False, 13], '011_001_018': [True, False, 17], '081_001_003': [True, False, 2]}}
 
 
-2022-09-15 13:16:27,925 - INFO     - main.py              - Line:160  - Performing fold 1 validation.
-2022-09-15 13:16:28,090 - INFO     - FoG_dataset.py       - Line:41   - Mode = val, total = 1586, NW = [484, 0.30], preFoG = [271, 0.53], FoG = [831, 0.17]
-2022-09-15 13:16:28,131 - INFO     - test.py              - Line:15   - Computing test metrics, level is episode.
-2022-09-15 13:16:43,529 - INFO     - test.py              - Line:52   - Fold 1, epoch 29 sample level performance: {'accu': 0.787515762925599, 'sens': [0.8925619834710744, 0.033210332103321034, 0.9723225030084236], 'prec': [0.6923076923076923, 0.5, 0.8559322033898306], 'geom': [0.7860836641340642, 0.12886103387626732, 0.9122730635097779], 'auc': None, 'f1_score': [0.7797833935018051, 0.06228373702422146, 0.9104225352112677], 'cmat': [[432, 7, 45], [171, 9, 91], [21, 2, 808]]}
-2022-09-15 13:16:43,530 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
-2022-09-15 13:16:43,530 - WARNING  - test.py              - Line:119  - episode 1, name = 011_000_019: predictions only have one step.
-2022-09-15 13:16:43,530 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:16:43,530 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
-2022-09-15 13:16:43,530 - WARNING  - test.py              - Line:119  - episode 2, name = 007_001_004: predictions only have one step.
-2022-09-15 13:16:43,530 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/47.
-2022-09-15 13:16:43,530 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
-2022-09-15 13:16:43,530 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
-2022-09-15 13:16:43,530 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/True, FalseAlarm/True, PredictMargin/2.
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
-2022-09-15 13:16:43,531 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
-2022-09-15 13:16:43,531 - WARNING  - test.py              - Line:119  - episode 6, name = 003_000_011: predictions only have one step.
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:43,531 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
-2022-09-15 13:16:43,532 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/4.
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
-2022-09-15 13:16:43,532 - WARNING  - test.py              - Line:119  - episode 10, name = 006_001_007: predictions only have one step.
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/45.
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
-2022-09-15 13:16:43,532 - WARNING  - test.py              - Line:119  - episode 11, name = 003_000_006: predictions only have one step.
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/13.
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
-2022-09-15 13:16:43,532 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/False, FalseAlarm/False, PredictMargin/0.
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
-2022-09-15 13:16:43,533 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/1.
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
-2022-09-15 13:16:43,533 - WARNING  - test.py              - Line:119  - episode 17, name = 001_000_007: predictions only have one step.
-2022-09-15 13:16:43,533 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
-2022-09-15 13:16:43,534 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage.
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/True, PredictMargin/2.
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/1.
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
-2022-09-15 13:16:43,534 - WARNING  - test.py              - Line:119  - episode 20, name = 007_000_011: predictions only have one step.
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/27.
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:16:43,534 - INFO     - test.py              - Line:57   - Fold 1, epoch 29 episode level performance: {'detected_FoG': [20.0, 0.9523809523809523], 'false_alarmed': [5.0, 0.23809523809523808], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [1, 0, 33], '007_001_004': [2, 0, 47], '009_002_008': [3, 0, 33], '007_001_000': [4, 1, 2], '007_002_001': [5, 1, 7], '003_000_011': [6, 1, 11], '082_001_000': [7, 1, 2], '081_001_006': [8, 1, 35], '010_000_004': [9, 2, 4], '006_001_007': [10, 2, 45], '003_000_006': [11, 2, 13], '010_001_000': [11, 2, 0], '001_000_006': [12, 2, 41], '081_000_000': [13, 3, 3], '006_001_000': [14, 3, 1], '003_003_000': [15, 4, 0], '001_000_007': [16, 4, 33], '010_001_012': [17, 5, 2], '010_000_006': [18, 5, 1], '007_000_011': [19, 5, 27], '003_001_019': [20, 5, 15]}}
+2022-09-15 17:49:29,013 - INFO     - main.py              - Line:161  - Performing fold 1 validation.
+2022-09-15 17:49:29,189 - INFO     - FoG_dataset.py       - Line:41   - Mode = val, total = 1586, NW = [484, 0.30], preFoG = [271, 0.53], FoG = [831, 0.17]
+2022-09-15 17:49:29,227 - INFO     - test.py              - Line:15   - Computing test metrics, level is episode.
+2022-09-15 17:49:44,790 - INFO     - test.py              - Line:52   - Fold 1, epoch 29 sample level performance: {'accu': 0.787515762925599, 'sens': [0.8925619834710744, 0.033210332103321034, 0.9723225030084236], 'prec': [0.6923076923076923, 0.5, 0.8559322033898306], 'geom': [0.7860836641340642, 0.12886103387626732, 0.9122730635097779], 'auc': None, 'f1_score': [0.7797833935018051, 0.06228373702422146, 0.9104225352112677], 'cmat': [[432, 7, 45], [171, 9, 91], [21, 2, 808]]}
+2022-09-15 17:49:44,791 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
+2022-09-15 17:49:44,791 - WARNING  - test.py              - Line:119  - episode 1, name = 011_000_019: predictions only have one step.
+2022-09-15 17:49:44,791 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:49:44,791 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
+2022-09-15 17:49:44,791 - WARNING  - test.py              - Line:119  - episode 2, name = 007_001_004: predictions only have one step.
+2022-09-15 17:49:44,791 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/47.
+2022-09-15 17:49:44,791 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
+2022-09-15 17:49:44,792 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/True, FalseAlarm/True, PredictMargin/2.
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
+2022-09-15 17:49:44,792 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
+2022-09-15 17:49:44,792 - WARNING  - test.py              - Line:119  - episode 6, name = 003_000_011: predictions only have one step.
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
+2022-09-15 17:49:44,792 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:44,793 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
+2022-09-15 17:49:44,793 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
+2022-09-15 17:49:44,793 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
+2022-09-15 17:49:44,793 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
+2022-09-15 17:49:44,793 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/4.
+2022-09-15 17:49:44,793 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
+2022-09-15 17:49:44,793 - WARNING  - test.py              - Line:119  - episode 10, name = 006_001_007: predictions only have one step.
+2022-09-15 17:49:44,793 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/45.
+2022-09-15 17:49:44,793 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
+2022-09-15 17:49:44,794 - WARNING  - test.py              - Line:119  - episode 11, name = 003_000_006: predictions only have one step.
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/13.
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/False, FalseAlarm/False, PredictMargin/0.
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
+2022-09-15 17:49:44,794 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/1.
+2022-09-15 17:49:44,794 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
+2022-09-15 17:49:44,795 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:49:44,795 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
+2022-09-15 17:49:44,795 - WARNING  - test.py              - Line:119  - episode 17, name = 001_000_007: predictions only have one step.
+2022-09-15 17:49:44,795 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:49:44,795 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
+2022-09-15 17:49:44,795 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage, gts = [1 1 1 1 1 1]
+2022-09-15 17:49:44,795 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
+2022-09-15 17:49:44,795 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/True, PredictMargin/2.
+2022-09-15 17:49:44,796 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
+2022-09-15 17:49:44,796 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/1.
+2022-09-15 17:49:44,796 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
+2022-09-15 17:49:44,796 - WARNING  - test.py              - Line:119  - episode 20, name = 007_000_011: predictions only have one step.
+2022-09-15 17:49:44,796 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/27.
+2022-09-15 17:49:44,796 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
+2022-09-15 17:49:44,796 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:49:44,796 - INFO     - test.py              - Line:57   - Fold 1, epoch 29 episode level performance: {'detected_FoG': [20.0, 0.9523809523809523], 'false_alarmed': [5.0, 0.23809523809523808], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [True, False, 33], '007_001_004': [True, False, 47], '009_002_008': [True, False, 33], '007_001_000': [True, True, 2], '007_002_001': [True, False, 7], '003_000_011': [True, False, 11], '082_001_000': [True, False, 2], '081_001_006': [True, False, 35], '010_000_004': [True, True, 4], '006_001_007': [True, False, 45], '003_000_006': [True, False, 13], '010_001_000': [False, False, 0], '001_000_006': [True, False, 41], '081_000_000': [True, True, 3], '006_001_000': [True, False, 1], '003_003_000': [True, True, 0], '001_000_007': [True, False, 33], '010_001_012': [True, True, 2], '010_000_006': [True, False, 1], '007_000_011': [True, False, 27], '003_001_019': [True, False, 15]}}
 
 
-2022-09-15 13:16:58,520 - INFO     - test.py              - Line:52   - Fold 1, epoch 59 sample level performance: {'accu': 0.7900378310214375, 'sens': [0.8739669421487604, 0.05166051660516605, 0.9819494584837545], 'prec': [0.7218430034129693, 0.6666666666666666, 0.8335035750766088], 'geom': [0.7942713153603811, 0.18558109926240882, 0.9046868984299206], 'auc': None, 'f1_score': [0.7906542056074767, 0.09589041095890412, 0.9016574585635359], 'cmat': [[423, 6, 55], [149, 14, 108], [14, 1, 816]]}
-2022-09-15 13:16:58,521 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
-2022-09-15 13:16:58,521 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/6.
-2022-09-15 13:16:58,521 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
-2022-09-15 13:16:58,521 - WARNING  - test.py              - Line:119  - episode 2, name = 007_001_004: predictions only have one step.
-2022-09-15 13:16:58,521 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/47.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
-2022-09-15 13:16:58,522 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/True, FalseAlarm/True, PredictMargin/2.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
-2022-09-15 13:16:58,522 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
-2022-09-15 13:16:58,522 - WARNING  - test.py              - Line:119  - episode 6, name = 003_000_011: predictions only have one step.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
-2022-09-15 13:16:58,522 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
-2022-09-15 13:16:58,523 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/8.
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/1.
-2022-09-15 13:16:58,523 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/False, FalseAlarm/False, PredictMargin/0.
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
-2022-09-15 13:16:58,524 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/False, PredictMargin/12.
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/4.
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:58,524 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
-2022-09-15 13:16:58,525 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage.
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
-2022-09-15 13:16:58,525 - WARNING  - test.py              - Line:119  - episode 19, name = 010_000_006: predictions only have one step.
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/45.
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
-2022-09-15 13:16:58,525 - WARNING  - test.py              - Line:119  - episode 20, name = 007_000_011: predictions only have one step.
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/27.
-2022-09-15 13:16:58,525 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
-2022-09-15 13:16:58,526 - WARNING  - test.py              - Line:119  - episode 21, name = 003_001_019: predictions only have one step.
-2022-09-15 13:16:58,526 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:16:58,526 - INFO     - test.py              - Line:57   - Fold 1, epoch 59 episode level performance: {'detected_FoG': [20.0, 0.9523809523809523], 'false_alarmed': [2.0, 0.09523809523809523], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [1, 0, 6], '007_001_004': [2, 0, 47], '009_002_008': [3, 0, 33], '007_001_000': [4, 1, 2], '007_002_001': [5, 1, 7], '003_000_011': [6, 1, 11], '082_001_000': [7, 1, 2], '081_001_006': [8, 1, 35], '010_000_004': [9, 2, 8], '006_001_007': [10, 2, 3], '003_000_006': [11, 2, 1], '010_001_000': [11, 2, 0], '001_000_006': [12, 2, 41], '081_000_000': [13, 2, 12], '006_001_000': [14, 2, 4], '003_003_000': [15, 2, 2], '001_000_007': [16, 2, 2], '010_001_012': [17, 2, 3], '010_000_006': [18, 2, 45], '007_000_011': [19, 2, 27], '003_001_019': [20, 2, 15]}}
+2022-09-15 17:49:59,954 - INFO     - test.py              - Line:52   - Fold 1, epoch 59 sample level performance: {'accu': 0.7900378310214375, 'sens': [0.8739669421487604, 0.05166051660516605, 0.9819494584837545], 'prec': [0.7218430034129693, 0.6666666666666666, 0.8335035750766088], 'geom': [0.7942713153603811, 0.18558109926240882, 0.9046868984299206], 'auc': None, 'f1_score': [0.7906542056074767, 0.09589041095890412, 0.9016574585635359], 'cmat': [[423, 6, 55], [149, 14, 108], [14, 1, 816]]}
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/6.
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
+2022-09-15 17:49:59,955 - WARNING  - test.py              - Line:119  - episode 2, name = 007_001_004: predictions only have one step.
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/47.
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
+2022-09-15 17:49:59,955 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/True, FalseAlarm/True, PredictMargin/2.
+2022-09-15 17:49:59,955 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
+2022-09-15 17:49:59,956 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
+2022-09-15 17:49:59,956 - WARNING  - test.py              - Line:119  - episode 6, name = 003_000_011: predictions only have one step.
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
+2022-09-15 17:49:59,956 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
+2022-09-15 17:49:59,956 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/8.
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/1.
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/False, FalseAlarm/False, PredictMargin/0.
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
+2022-09-15 17:49:59,957 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
+2022-09-15 17:49:59,957 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/False, PredictMargin/12.
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/4.
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
+2022-09-15 17:49:59,958 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage, gts = [1 1 1 1 1 1]
+2022-09-15 17:49:59,958 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
+2022-09-15 17:49:59,959 - WARNING  - test.py              - Line:119  - episode 19, name = 010_000_006: predictions only have one step.
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/45.
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
+2022-09-15 17:49:59,959 - WARNING  - test.py              - Line:119  - episode 20, name = 007_000_011: predictions only have one step.
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/27.
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
+2022-09-15 17:49:59,959 - WARNING  - test.py              - Line:119  - episode 21, name = 003_001_019: predictions only have one step.
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:49:59,959 - INFO     - test.py              - Line:57   - Fold 1, epoch 59 episode level performance: {'detected_FoG': [20.0, 0.9523809523809523], 'false_alarmed': [2.0, 0.09523809523809523], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [True, False, 6], '007_001_004': [True, False, 47], '009_002_008': [True, False, 33], '007_001_000': [True, True, 2], '007_002_001': [True, False, 7], '003_000_011': [True, False, 11], '082_001_000': [True, False, 2], '081_001_006': [True, False, 35], '010_000_004': [True, True, 8], '006_001_007': [True, False, 3], '003_000_006': [True, False, 1], '010_001_000': [False, False, 0], '001_000_006': [True, False, 41], '081_000_000': [True, False, 12], '006_001_000': [True, False, 4], '003_003_000': [True, False, 2], '001_000_007': [True, False, 2], '010_001_012': [True, False, 3], '010_000_006': [True, False, 45], '007_000_011': [True, False, 27], '003_001_019': [True, False, 15]}}
 
 
-2022-09-15 13:17:13,438 - INFO     - test.py              - Line:52   - Fold 1, epoch 89 sample level performance: {'accu': 0.7837326607818411, 'sens': [0.8512396694214877, 0.04428044280442804, 0.9855595667870036], 'prec': [0.7396768402154399, 0.75, 0.8084896347482725], 'geom': [0.7935000119368125, 0.1822370217692361, 0.8926447749100929], 'auc': None, 'f1_score': [0.7915465898174832, 0.08362369337979093, 0.8882863340563991], 'cmat': [[412, 4, 68], [133, 12, 126], [12, 0, 819]]}
-2022-09-15 13:17:13,439 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
-2022-09-15 13:17:13,439 - WARNING  - test.py              - Line:119  - episode 1, name = 011_000_019: predictions only have one step.
-2022-09-15 13:17:13,439 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:17:13,439 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
-2022-09-15 13:17:13,439 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/12.
-2022-09-15 13:17:13,439 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
-2022-09-15 13:17:13,439 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
-2022-09-15 13:17:13,439 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:17:13,439 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
-2022-09-15 13:17:13,440 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
-2022-09-15 13:17:13,440 - WARNING  - test.py              - Line:119  - episode 6, name = 003_000_011: predictions only have one step.
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/4.
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
-2022-09-15 13:17:13,440 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
-2022-09-15 13:17:13,440 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/7.
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/1.
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
-2022-09-15 13:17:13,441 - WARNING  - test.py              - Line:119  - episode 12, name = 010_001_000: predictions only have one step.
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/True, FalseAlarm/False, PredictMargin/57.
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
-2022-09-15 13:17:13,441 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
-2022-09-15 13:17:13,441 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
-2022-09-15 13:17:13,442 - WARNING  - test.py              - Line:119  - episode 15, name = 006_001_000: predictions only have one step.
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/71.
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/True, PredictMargin/2.
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
-2022-09-15 13:17:13,442 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage.
-2022-09-15 13:17:13,442 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/True, PredictMargin/3.
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
-2022-09-15 13:17:13,443 - WARNING  - test.py              - Line:119  - episode 19, name = 010_000_006: predictions only have one step.
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/45.
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/14.
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
-2022-09-15 13:17:13,443 - WARNING  - test.py              - Line:119  - episode 21, name = 003_001_019: predictions only have one step.
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:17:13,443 - INFO     - test.py              - Line:57   - Fold 1, epoch 89 episode level performance: {'detected_FoG': [21.0, 1.0], 'false_alarmed': [5.0, 0.23809523809523808], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [1, 0, 33], '007_001_004': [2, 0, 12], '009_002_008': [3, 0, 33], '007_001_000': [4, 1, 3], '007_002_001': [5, 1, 7], '003_000_011': [6, 1, 11], '082_001_000': [7, 1, 4], '081_001_006': [8, 1, 35], '010_000_004': [9, 2, 7], '006_001_007': [10, 2, 3], '003_000_006': [11, 2, 1], '010_001_000': [12, 2, 57], '001_000_006': [13, 2, 41], '081_000_000': [14, 3, 3], '006_001_000': [15, 3, 71], '003_003_000': [16, 3, 2], '001_000_007': [17, 4, 2], '010_001_012': [18, 5, 3], '010_000_006': [19, 5, 45], '007_000_011': [20, 5, 14], '003_001_019': [21, 5, 15]}}
+2022-09-15 17:50:15,373 - INFO     - test.py              - Line:52   - Fold 1, epoch 89 sample level performance: {'accu': 0.7837326607818411, 'sens': [0.8512396694214877, 0.04428044280442804, 0.9855595667870036], 'prec': [0.7396768402154399, 0.75, 0.8084896347482725], 'geom': [0.7935000119368125, 0.1822370217692361, 0.8926447749100929], 'auc': None, 'f1_score': [0.7915465898174832, 0.08362369337979093, 0.8882863340563991], 'cmat': [[412, 4, 68], [133, 12, 126], [12, 0, 819]]}
+2022-09-15 17:50:15,374 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
+2022-09-15 17:50:15,374 - WARNING  - test.py              - Line:119  - episode 1, name = 011_000_019: predictions only have one step.
+2022-09-15 17:50:15,374 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:50:15,374 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/12.
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
+2022-09-15 17:50:15,375 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
+2022-09-15 17:50:15,375 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
+2022-09-15 17:50:15,375 - WARNING  - test.py              - Line:119  - episode 6, name = 003_000_011: predictions only have one step.
+2022-09-15 17:50:15,375 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/4.
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
+2022-09-15 17:50:15,376 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/7.
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
+2022-09-15 17:50:15,376 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/1.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
+2022-09-15 17:50:15,377 - WARNING  - test.py              - Line:119  - episode 12, name = 010_001_000: predictions only have one step.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/True, FalseAlarm/False, PredictMargin/57.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
+2022-09-15 17:50:15,377 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
+2022-09-15 17:50:15,377 - WARNING  - test.py              - Line:119  - episode 15, name = 006_001_000: predictions only have one step.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/71.
+2022-09-15 17:50:15,377 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/False, PredictMargin/2.
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/True, PredictMargin/2.
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
+2022-09-15 17:50:15,378 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage, gts = [1 1 1 1 1 1]
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/True, PredictMargin/3.
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
+2022-09-15 17:50:15,378 - WARNING  - test.py              - Line:119  - episode 19, name = 010_000_006: predictions only have one step.
+2022-09-15 17:50:15,378 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/45.
+2022-09-15 17:50:15,379 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
+2022-09-15 17:50:15,379 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/14.
+2022-09-15 17:50:15,379 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
+2022-09-15 17:50:15,379 - WARNING  - test.py              - Line:119  - episode 21, name = 003_001_019: predictions only have one step.
+2022-09-15 17:50:15,379 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:50:15,379 - INFO     - test.py              - Line:57   - Fold 1, epoch 89 episode level performance: {'detected_FoG': [21.0, 1.0], 'false_alarmed': [5.0, 0.23809523809523808], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [True, False, 33], '007_001_004': [True, False, 12], '009_002_008': [True, False, 33], '007_001_000': [True, True, 3], '007_002_001': [True, False, 7], '003_000_011': [True, False, 11], '082_001_000': [True, False, 4], '081_001_006': [True, False, 35], '010_000_004': [True, True, 7], '006_001_007': [True, False, 3], '003_000_006': [True, False, 1], '010_001_000': [True, False, 57], '001_000_006': [True, False, 41], '081_000_000': [True, True, 3], '006_001_000': [True, False, 71], '003_003_000': [True, False, 2], '001_000_007': [True, True, 2], '010_001_012': [True, True, 3], '010_000_006': [True, False, 45], '007_000_011': [True, False, 14], '003_001_019': [True, False, 15]}}
 
 
-2022-09-15 13:17:28,859 - INFO     - test.py              - Line:52   - Fold 1, epoch 99 sample level performance: {'accu': 0.7843631778058008, 'sens': [0.8677685950413223, 0.02952029520295203, 0.9819494584837545], 'prec': [0.711864406779661, 0.6666666666666666, 0.8292682926829268], 'geom': [0.7859602891565901, 0.14028612476637886, 0.9023854780179852], 'auc': None, 'f1_score': [0.782122905027933, 0.056537102473498226, 0.8991735537190081], 'cmat': [[420, 4, 60], [155, 8, 108], [15, 0, 816]]}
-2022-09-15 13:17:28,860 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
-2022-09-15 13:17:28,860 - WARNING  - test.py              - Line:119  - episode 1, name = 011_000_019: predictions only have one step.
-2022-09-15 13:17:28,860 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:17:28,860 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
-2022-09-15 13:17:28,860 - WARNING  - test.py              - Line:119  - episode 2, name = 007_001_004: predictions only have one step.
-2022-09-15 13:17:28,860 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/47.
-2022-09-15 13:17:28,860 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
-2022-09-15 13:17:28,860 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/False, FalseAlarm/True, PredictMargin/0.
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
-2022-09-15 13:17:28,861 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:17:28,861 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
-2022-09-15 13:17:28,862 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/6.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
-2022-09-15 13:17:28,862 - WARNING  - test.py              - Line:119  - episode 10, name = 006_001_007: predictions only have one step.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/45.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/-1.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
-2022-09-15 13:17:28,862 - WARNING  - test.py              - Line:119  - episode 12, name = 010_001_000: predictions only have one step.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/True, FalseAlarm/False, PredictMargin/57.
-2022-09-15 13:17:28,862 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
-2022-09-15 13:17:28,863 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/4.
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/False, PredictMargin/1.
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/False, PredictMargin/1.
-2022-09-15 13:17:28,863 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
-2022-09-15 13:17:28,863 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage.
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/False, PredictMargin/3.
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
-2022-09-15 13:17:28,864 - WARNING  - test.py              - Line:119  - episode 19, name = 010_000_006: predictions only have one step.
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/45.
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/8.
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
-2022-09-15 13:17:28,864 - INFO     - test.py              - Line:57   - Fold 1, epoch 99 episode level performance: {'detected_FoG': [20.0, 0.9523809523809523], 'false_alarmed': [3.0, 0.14285714285714285], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [1, 0, 33], '007_001_004': [2, 0, 47], '009_002_008': [3, 0, 33], '007_001_000': [3, 1, 0], '007_002_001': [4, 1, 7], '003_000_011': [5, 1, 11], '082_001_000': [6, 1, 3], '081_001_006': [7, 1, 35], '010_000_004': [8, 2, 6], '006_001_007': [9, 2, 45], '003_000_006': [10, 2, -1], '010_001_000': [11, 2, 57], '001_000_006': [12, 2, 41], '081_000_000': [13, 3, 3], '006_001_000': [14, 3, 4], '003_003_000': [15, 3, 1], '001_000_007': [16, 3, 1], '010_001_012': [17, 3, 3], '010_000_006': [18, 3, 45], '007_000_011': [19, 3, 8], '003_001_019': [20, 3, 15]}}
+2022-09-15 17:50:30,452 - INFO     - test.py              - Line:52   - Fold 1, epoch 99 sample level performance: {'accu': 0.7843631778058008, 'sens': [0.8677685950413223, 0.02952029520295203, 0.9819494584837545], 'prec': [0.711864406779661, 0.6666666666666666, 0.8292682926829268], 'geom': [0.7859602891565901, 0.14028612476637886, 0.9023854780179852], 'auc': None, 'f1_score': [0.782122905027933, 0.056537102473498226, 0.8991735537190081], 'cmat': [[420, 4, 60], [155, 8, 108], [15, 0, 816]]}
+2022-09-15 17:50:30,453 - INFO     - test.py              - Line:79   - Current episode is 1/011_000_019
+2022-09-15 17:50:30,453 - WARNING  - test.py              - Line:119  - episode 1, name = 011_000_019: predictions only have one step.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:90   - episode 1, name = 011_000_019: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:79   - Current episode is 2/007_001_004
+2022-09-15 17:50:30,454 - WARNING  - test.py              - Line:119  - episode 2, name = 007_001_004: predictions only have one step.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:90   - episode 2, name = 007_001_004: isDetected/True, FalseAlarm/False, PredictMargin/47.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:79   - Current episode is 3/009_002_008
+2022-09-15 17:50:30,454 - WARNING  - test.py              - Line:119  - episode 3, name = 009_002_008: predictions only have one step.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:90   - episode 3, name = 009_002_008: isDetected/True, FalseAlarm/False, PredictMargin/33.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:79   - Current episode is 4/007_001_000
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:90   - episode 4, name = 007_001_000: isDetected/False, FalseAlarm/True, PredictMargin/0.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:79   - Current episode is 5/007_002_001
+2022-09-15 17:50:30,454 - WARNING  - test.py              - Line:119  - episode 5, name = 007_002_001: predictions only have one step.
+2022-09-15 17:50:30,454 - INFO     - test.py              - Line:90   - episode 5, name = 007_002_001: isDetected/True, FalseAlarm/False, PredictMargin/7.
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:79   - Current episode is 6/003_000_011
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:90   - episode 6, name = 003_000_011: isDetected/True, FalseAlarm/False, PredictMargin/11.
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:79   - Current episode is 7/082_001_000
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:90   - episode 7, name = 082_001_000: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:79   - Current episode is 8/081_001_006
+2022-09-15 17:50:30,455 - WARNING  - test.py              - Line:119  - episode 8, name = 081_001_006: predictions only have one step.
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:90   - episode 8, name = 081_001_006: isDetected/True, FalseAlarm/False, PredictMargin/35.
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:79   - Current episode is 9/010_000_004
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:90   - episode 9, name = 010_000_004: isDetected/True, FalseAlarm/True, PredictMargin/6.
+2022-09-15 17:50:30,455 - INFO     - test.py              - Line:79   - Current episode is 10/006_001_007
+2022-09-15 17:50:30,455 - WARNING  - test.py              - Line:119  - episode 10, name = 006_001_007: predictions only have one step.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:90   - episode 10, name = 006_001_007: isDetected/True, FalseAlarm/False, PredictMargin/45.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:79   - Current episode is 11/003_000_006
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:90   - episode 11, name = 003_000_006: isDetected/True, FalseAlarm/False, PredictMargin/-1.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:79   - Current episode is 12/010_001_000
+2022-09-15 17:50:30,456 - WARNING  - test.py              - Line:119  - episode 12, name = 010_001_000: predictions only have one step.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:90   - episode 12, name = 010_001_000: isDetected/True, FalseAlarm/False, PredictMargin/57.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:79   - Current episode is 13/001_000_006
+2022-09-15 17:50:30,456 - WARNING  - test.py              - Line:119  - episode 13, name = 001_000_006: predictions only have one step.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:90   - episode 13, name = 001_000_006: isDetected/True, FalseAlarm/False, PredictMargin/41.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:79   - Current episode is 14/081_000_000
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:90   - episode 14, name = 081_000_000: isDetected/True, FalseAlarm/True, PredictMargin/3.
+2022-09-15 17:50:30,456 - INFO     - test.py              - Line:79   - Current episode is 15/006_001_000
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:90   - episode 15, name = 006_001_000: isDetected/True, FalseAlarm/False, PredictMargin/4.
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:79   - Current episode is 16/003_003_000
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:90   - episode 16, name = 003_003_000: isDetected/True, FalseAlarm/False, PredictMargin/1.
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:79   - Current episode is 17/001_000_007
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:90   - episode 17, name = 001_000_007: isDetected/True, FalseAlarm/False, PredictMargin/1.
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:79   - Current episode is 18/011_003_000
+2022-09-15 17:50:30,457 - WARNING  - test.py              - Line:107  - episode 18, name = 011_003_000: This episode does not have FoG stage, gts = [1 1 1 1 1 1]
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:79   - Current episode is 18/010_001_012
+2022-09-15 17:50:30,457 - INFO     - test.py              - Line:90   - episode 18, name = 010_001_012: isDetected/True, FalseAlarm/False, PredictMargin/3.
+2022-09-15 17:50:30,458 - INFO     - test.py              - Line:79   - Current episode is 19/010_000_006
+2022-09-15 17:50:30,458 - WARNING  - test.py              - Line:119  - episode 19, name = 010_000_006: predictions only have one step.
+2022-09-15 17:50:30,458 - INFO     - test.py              - Line:90   - episode 19, name = 010_000_006: isDetected/True, FalseAlarm/False, PredictMargin/45.
+2022-09-15 17:50:30,458 - INFO     - test.py              - Line:79   - Current episode is 20/007_000_011
+2022-09-15 17:50:30,458 - INFO     - test.py              - Line:90   - episode 20, name = 007_000_011: isDetected/True, FalseAlarm/False, PredictMargin/8.
+2022-09-15 17:50:30,458 - INFO     - test.py              - Line:79   - Current episode is 21/003_001_019
+2022-09-15 17:50:30,458 - INFO     - test.py              - Line:90   - episode 21, name = 003_001_019: isDetected/True, FalseAlarm/False, PredictMargin/15.
+2022-09-15 17:50:30,458 - INFO     - test.py              - Line:57   - Fold 1, epoch 99 episode level performance: {'detected_FoG': [20.0, 0.9523809523809523], 'false_alarmed': [3.0, 0.14285714285714285], 'total_episodes': 21.0, 'forcast_windows': {'011_000_019': [True, False, 33], '007_001_004': [True, False, 47], '009_002_008': [True, False, 33], '007_001_000': [False, True, 0], '007_002_001': [True, False, 7], '003_000_011': [True, False, 11], '082_001_000': [True, False, 3], '081_001_006': [True, False, 35], '010_000_004': [True, True, 6], '006_001_007': [True, False, 45], '003_000_006': [True, False, -1], '010_001_000': [True, False, 57], '001_000_006': [True, False, 41], '081_000_000': [True, True, 3], '006_001_000': [True, False, 4], '003_003_000': [True, False, 1], '001_000_007': [True, False, 1], '010_001_012': [True, False, 3], '010_000_006': [True, False, 45], '007_000_011': [True, False, 8], '003_001_019': [True, False, 15]}}
 
 
