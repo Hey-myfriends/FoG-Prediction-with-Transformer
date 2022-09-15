@@ -10,9 +10,12 @@ import sklearn.metrics as metrics
 import numpy as np
 
 @torch.no_grad()
-def test(model: nn.Module, val_dataloader: Iterable, output_dir: str, device: torch.device, level="episode"):
+def test(model: nn.Module, val_dataloader: Iterable, output_dir: str, device: torch.device, level="episode", ckpts=None,
+        n1=3, n2=3):
     logger.info("Computing test metrics, level is {}.".format(level))
-    ckpts = [ckpt for ckpt in os.listdir(output_dir) if ckpt.endswith(".pth")]
+    if ckpts is None:
+        ckpts = [ckpt for ckpt in os.listdir(output_dir) if ckpt.endswith(".pth")]
+    ckpts = sorted(ckpts, key=lambda x: x.split(".")[0][-7:])
     performance = {}
     model = model.to(device)
     model.eval()
@@ -50,12 +53,12 @@ def test(model: nn.Module, val_dataloader: Iterable, output_dir: str, device: to
         performance.update({"Fold_{}_epoch_{}_sampleLevel".format(ckpt["fold"], ckpt["epoch"]): samples_level})
         # pdb.set_trace()
         if level == "episode":
-            episode_metrics_dict = cal_episode_metrics(targets, targets_info, preds)
+            episode_metrics_dict = cal_episode_metrics(targets, targets_info, preds, n1=n1, n2=n2)
             logger.info("Fold {}, epoch {} episode level performance: ".format(ckpt["fold"], ckpt["epoch"]) + str(episode_metrics_dict) + "\n\n")
             performance["Fold_{}_epoch_{}_episodeLevel".format(ckpt["fold"], ckpt["epoch"])] = episode_metrics_dict
     return performance
 
-def cal_episode_metrics(targets: np.array, targets_info: list, preds: np.array):
+def cal_episode_metrics(targets: np.array, targets_info: list, preds: np.array, n1=3, n2=3):
     # parse targets_info to info
     # patients = [info.split("_")[0] for info in targets_info if info.endswith(".txt")]
     # tasks = [info.split("_")[1] for info in targets_info if info.endswith(".txt")]
@@ -67,35 +70,53 @@ def cal_episode_metrics(targets: np.array, targets_info: list, preds: np.array):
         p, t, e = info.split("_")[:3]
         episodes.append("{}_{}_{}".format(p, t, e))
     episodes = np.array(episodes)
-    detected_FoG, false_alarmed, total_episodes, forcast_windows = 0, 0, 0, []
+    detected_FoG, false_alarmed, total_episodes, forcast_windows = 0, 0, 0, {}
     curidx = 0
     while curidx < episodes.shape[0]:
         epi_loc = (episodes == episodes[curidx])
         total_episodes += 1
         targets_now, preds_now = targets[epi_loc], preds[epi_loc]
-        isDetected, FalseAlarm, PredictMargin = cal_one_episode(targets_now, preds_now)
+        logger.info("Current episode is {}/{}".format(total_episodes, episodes[curidx]))
+        isDetected, FalseAlarm, PredictMargin = cal_one_episode(targets_now, preds_now, n1=n1, n2=n2, header="episode {}, name = {}: ".format(total_episodes, episodes[curidx]))
+        if PredictMargin == "no pre-FoG":
+            total_episodes -= 1
+            curidx += epi_loc.sum()
+            continue
+        elif PredictMargin == "no FoG":
+            total_episodes -= 1
+            curidx += epi_loc.sum()
+            continue
+            
         logger.info("episode {}, name = {}: isDetected/{}, FalseAlarm/{}, PredictMargin/{}.".format(
             total_episodes, episodes[curidx], isDetected, FalseAlarm, PredictMargin))
         detected_FoG += isDetected
         false_alarmed += FalseAlarm
-        forcast_windows.append(PredictMargin)
+        forcast_windows[episodes[curidx]] = [detected_FoG, false_alarmed, PredictMargin]
 
         curidx += epi_loc.sum()
     return {"detected_FoG": [detected_FoG/1.0, detected_FoG/total_episodes], "false_alarmed": [false_alarmed/1.0, false_alarmed/total_episodes], "total_episodes": total_episodes/1.0, 
             "forcast_windows": forcast_windows}
 
-def cal_one_episode(gts: np.array, preds: np.array, n1=2, n2=3):
-    idx_pre, idx_fog = np.argwhere(gts == 1)[0, 0], np.argwhere(gts == 2)[0, 0]
+def cal_one_episode(gts: np.array, preds: np.array, n1=3, n2=3, header=""):
+    # pdb.set_trace()
+    idx_pre, idx_fog = np.argwhere(gts == 1), np.argwhere(gts == 2)
+    if idx_pre.shape[0] == 0:
+        logger.warning(header + "This episode does not have pre-FoG stage.")
+        return False, False, "no pre-FoG"
+    if idx_fog.shape[0] == 0:
+        logger.warning(header + "This episode does not have FoG stage.")
+        return False, False, "no FoG"
+    idx_pre, idx_fog = idx_pre[0, 0], idx_fog[0, 0]
     assert np.all(gts[:idx_pre] == 0) and np.all(gts[idx_pre:idx_fog] == 1) and np.all(gts[idx_fog:] == 2), \
         "please check whether in episode level..."
 
     hits = np.argwhere(preds != 0)[:, 0]
     hits_step = np.argwhere(hits[1:] - hits[:-1] != 1)[:, 0]
     if hits.shape[0] == 0:
-        logger.warning("Note: predictions are all NW.")
+        logger.warning(header + "predictions are all NW.")
         return False, False, 0
     if hits_step.shape[0] == 0:
-        logger.warning("predictions only have one step.")
+        logger.warning(header + "predictions only have one step.")
         return True, False, idx_fog # bug
     hits_step = np.concatenate([hits_step, [hits.shape[0]-1]], axis=0)
     start, base = hits[0], hits[0]

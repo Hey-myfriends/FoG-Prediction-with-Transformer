@@ -4,7 +4,7 @@ def get_root_logger(level=logging.INFO, console_out=True, logName=None, fmt=None
     logger = logging.getLogger("")
     logger.setLevel(level)
     if fmt is None:
-        fmt = logging.Formatter(fmt="%(asctime)s - %(levelname)-4s - %(filename)-20s - Line:%(lineno)-4s - %(message)s")
+        fmt = logging.Formatter(fmt="%(asctime)s - %(levelname)-8s - %(filename)-20s - Line:%(lineno)-4s - %(message)s")
     else:
         fmt = logging.Formatter(fmt=fmt)
 
@@ -22,7 +22,7 @@ def get_root_logger(level=logging.INFO, console_out=True, logName=None, fmt=None
 
     return logger
 
-logger = get_root_logger(level=logging.INFO, console_out=True, logName="train_test.log")
+logger = get_root_logger(level=logging.INFO, console_out=True, logName="test_alone.log")
 
 if __name__ == "__main__":
     logger = get_root_logger(level=logging.DEBUG, console_out=True, logName="./log.log")

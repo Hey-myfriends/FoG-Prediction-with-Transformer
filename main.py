@@ -1,4 +1,5 @@
 
+from ast import JoinedStr
 import torch, random, os, time, json, pdb
 import datetime
 import numpy as np
@@ -27,10 +28,12 @@ class Arguments(object):
         self.gamma = 0.5
         self.level = "episode" #"sample"
         self.output_dir = "./outputs_" + self.level
+        self.n1 = 3
+        self.n2 = 3
         self.log()
 
     def log(self):
-        logger.info(f"numfolds: {self.numfolds}, seed: {self.seed}, bs: {self.batchsize}, epoch: {self.epochs}, lr_drop: {self.lr_drop}, gamma: {self.gamma}, level: {self.level}")
+        logger.info(f"numfolds: {self.numfolds}, bs: {self.batchsize}, epoch: {self.epochs}, lr_drop: {self.lr_drop}, gamma: {self.gamma}, level: {self.level}, [n1, n2]: [{self.n1, self.n2}], seed: {self.seed}")
 
 def main():
     # pdb.set_trace()
@@ -47,7 +50,10 @@ def main():
     logger.info(f"in_chan: {in_chan}, d_model: {d_model}, num_class: {num_class}, cls_type: {cls_type}, aux_loss: {aux_loss}")
 
     all_samples = split_n_fold(n = args.numfolds, rootpth=args.rootpath, level=args.level, seed=args.seed)
-    for fold in range(1): #range(args.numfolds):
+    samples_dist = {args.level: {fold: all_samples[fold] for fold in range(args.numfolds)}}
+    with open(os.path.join(args.output_dir, "all_samples.josn"), "w") as f:
+        f.write(json.dumps(samples_dist, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
+    for fold in range(3): #range(args.numfolds):
         logpath = os.path.join(args.output_dir, f"train_fold_{fold:02}.txt")
         if os.path.exists(logpath):
             os.remove(logpath)
@@ -122,7 +128,7 @@ def main():
         logger.info('Fold.{} Training time cost: {}'.format(fold, total_time_str))
 
         performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level)
-        with open(os.path.join(args.output_dir, f"test_fold_{fold:02}.json"), "a") as pf:
+        with open(os.path.join(args.output_dir, f"test_fold_{fold:02}.json"), "w") as pf:
             pf.write(json.dumps(performance, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
 
 def test_ckpts():
@@ -134,23 +140,38 @@ def test_ckpts():
     in_chan, d_model, num_class, cls_type, aux_loss = 6, 128, 3, "cls_token", True
     cls_weight, focal_scaler = torch.ones(num_class), 2
     logger.info(f"in_chan: {in_chan}, d_model: {d_model}, num_class: {num_class}, cls_type: {cls_type}, aux_loss: {aux_loss}")
-
-    all_samples = split_n_fold(n = args.numfolds, rootpth=args.rootpath, level=args.level, seed=args.seed)
-    for fold in range(1): #range(args.numfolds):
-        val_samples = all_samples[fold]
+    # pdb.set_trace()
+    samples_split = None
+    with open(os.path.join(args.output_dir, "all_samples.josn"), "r") as f:
+        samples_split = json.load(f)
+    if samples_split is None:
+        logger.error("all_sample.json load error.")
+        exit()
+    ckpts = [p for p in os.listdir(args.output_dir) if p.endswith(".pth")]
+    # folds = set([int(ckpt.split(".")[0][-2:]) for ckpt in ckpts])
+    folds = {}
+    for ckpt in ckpts:
+        fld = int(ckpt.split(".")[0][-2:])
+        if fld not in folds.keys():
+            folds[fld] = [ckpt]
+        else:
+            folds[fld].append(ckpt)
+    for fold in folds.keys(): #range(args.numfolds):
+        logger.info("Performing fold {} validation.".format(fold))
+        val_samples = samples_split[args.level]["{}".format(fold)]
         dataset_val = build_dataset(val_samples, rootpth=args.rootpath, level=args.level, mode="val")
         data_loader_val = DataLoader(dataset_val, args.batchsize, shuffle=False, collate_fn=collate_fn)
 
         model, _ = build_model(in_chan, d_model, num_class, cls_type=cls_type, aux_loss=aux_loss,
                                 cls_weight=None, focal_scaler=focal_scaler)
         model.to(args.device)
-        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level)
+        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level, ckpts=folds[fold])
         # pdb.set_trace()
-        with open(os.path.join(args.output_dir, f"test_fold_{fold:02}.json"), "a") as pf:
+        with open(os.path.join(args.output_dir, f"test_alone_fold_{fold:02}.json"), "w") as pf:
             pf.write(json.dumps(performance, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
 
 if __name__ == "__main__":
-    main()
+    # main()
     # args = Arguments()
     # plot_logs(args.output_dir, log_name="train.txt", fields=("loss", "loss_ce", "loss_NW", "loss_preFoG", "loss_FoG", "class_error"))
-    # test_ckpts()
+    test_ckpts()
