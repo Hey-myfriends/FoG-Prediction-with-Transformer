@@ -91,6 +91,7 @@ def main():
         logger.info("Fold {}: Start training...".format(fold))
         start_time = time.time()
         # pdb.set_trace()
+        ckpts = []
         for epoch in range(args.epochs):
             train_stats = train_one_epoch(
                 model, criterion, data_loader_train, optimizer, args.device, 
@@ -120,6 +121,7 @@ def main():
                         "optimizer": optimizer.state_dict(),
                         "lr_scheduler": lr_schedular.state_dict()
                     }, ckpt)
+                    ckpts.append(ckpt)
                 with open(logpath, "a") as f:
                     f.write(json.dumps(log_stats) + "\n")
 
@@ -128,7 +130,7 @@ def main():
         total_time_str = str(datetime.timedelta(seconds=int(total_time)))
         logger.info('Fold.{} Training time cost: {}'.format(fold, total_time_str))
 
-        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level, n1=args.n1, n2=args.n2)
+        performance = test(model, data_loader_val, args.output_dir, args.device, level=args.level, ckpts=ckpts, n1=args.n1, n2=args.n2)
         with open(os.path.join(args.output_dir, f"test_fold_{fold:02}.json"), "w") as pf:
             pf.write(json.dumps(performance, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
 

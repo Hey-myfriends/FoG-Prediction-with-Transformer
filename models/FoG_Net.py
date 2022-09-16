@@ -6,9 +6,9 @@ print("Current path is ", os.getcwd())
 import torch
 from torch import nn, Tensor
 import torch.nn.functional as F
-from backbone import build_backbone
-from encoder import build_encoder_FoG
-from positional_encoding import PositionalEncoding
+from .backbone import build_backbone
+from .encoder import build_encoder_FoG
+from .positional_encoding import PositionalEncoding
 from typing import Optional
 import sklearn.metrics as metrics
 
@@ -31,8 +31,6 @@ class FoG_Net(nn.Module):
         if cls_type == "cls_token":
             # self.pos_embed = nn.Embedding(hidden_dim, 24+1).weight
             self.cls_token = torch.randn(hidden_dim, 1)
-        # else:
-        #     self.pos_embed = nn.Embedding(hidden_dim, 24).weight
 
     def forward(self, x):
         # pdb.set_trace()
@@ -45,7 +43,7 @@ class FoG_Net(nn.Module):
             cls_token = self.cls_token.repeat(bs, 1, 1).to(features.device) # (bs, L, d_model)
             features = torch.cat((cls_token, features), dim=2) # TODO
         # pos = self.pos_embed.unsqueeze(0).repeat(bs, 1, 1) # not properly
-        pos = self.pos_embed(L).unsqueeze(0).repeat(bs, 1, 1)
+        pos = self.pos_embed(L+1 if self.cls_type == "cls_token" else L).unsqueeze(0).repeat(bs, 1, 1)
         hs = self.encoder(features, src_key_padding_mask=None, pos=pos)
         if self.cls_type == "cls_token":
             output_class = self.cls_embed(hs[:, :, 0, :])
