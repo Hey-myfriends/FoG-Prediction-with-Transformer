@@ -22,7 +22,7 @@ def get_root_logger(level=logging.INFO, console_out=True, logName=None, fmt=None
 
     return logger
 
-logger = get_root_logger(level=logging.INFO, console_out=True, logName="test_alone.log")
+logger = get_root_logger(level=logging.INFO, console_out=True, logName="train_test.log")
 
 if __name__ == "__main__":
     logger = get_root_logger(level=logging.DEBUG, console_out=True, logName="./log.log")

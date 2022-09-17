@@ -48,7 +48,7 @@ class TransformerEncoder_with_intermid(nn.Module):
         
         # pdb.set_trace()
         src = src.permute(2, 0, 1)
-        pos = pos.permute(2, 0, 1)
+        pos = pos.permute(2, 0, 1) if pos is not None else None
         
         output = src
 

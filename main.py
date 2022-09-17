@@ -26,15 +26,17 @@ class Arguments(object):
         self.clip_max_norm = 0.15
         self.lr_drop = 30
         self.gamma = 0.5
+        self.tag = "noPE"
         self.level = "episode" #"sample"
-        self.output_dir = "./outputs_" + self.level
+        self.output_dir = "./outputs_{}_{}".format(self.level, self.tag)
         self.n1 = 3
         self.n2 = 3
+        self.resume_fold_split = "./outputs_episode/all_samples.josn"
         if log_:
             self.log()
 
     def log(self):
-        logger.info(f"numfolds: {self.numfolds}, bs: {self.batchsize}, epoch: {self.epochs}, lr_drop: {self.lr_drop}, gamma: {self.gamma}, level: {self.level}, [n1, n2]: [{self.n1}, {self.n2}], seed: {self.seed}")
+        logger.info(f"numfolds: {self.numfolds}, bs: {self.batchsize}, epoch: {self.epochs}, lr_drop: {self.lr_drop}, gamma: {self.gamma}, level: {self.level}, tag{self.tag}, [n1, n2]: [{self.n1}, {self.n2}], seed: {self.seed}")
 
 def main():
     # pdb.set_trace()
@@ -50,11 +52,18 @@ def main():
     cls_weight, focal_scaler = torch.ones(num_class), 2
     logger.info(f"in_chan: {in_chan}, d_model: {d_model}, num_class: {num_class}, cls_type: {cls_type}, aux_loss: {aux_loss}")
 
-    all_samples = split_n_fold(n = args.numfolds, rootpth=args.rootpath, level=args.level, seed=args.seed)
-    samples_dist = {args.level: {fold: all_samples[fold] for fold in range(args.numfolds)}}
-    with open(os.path.join(args.output_dir, "all_samples.josn"), "w") as f:
-        f.write(json.dumps(samples_dist, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
-    for fold in range(3): #range(args.numfolds):
+    if args.resume_fold_split is None:
+        all_samples = split_n_fold(n = args.numfolds, rootpth=args.rootpath, level=args.level, seed=args.seed)
+        samples_dist = {args.level: {fold: all_samples[fold] for fold in range(args.numfolds)}}
+        with open(os.path.join(args.output_dir, "all_samples.josn"), "w") as f:
+            f.write(json.dumps(samples_dist, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
+    else:
+        # pdb.set_trace()
+        with open(args.resume_fold_split, "r") as f:
+            all_samples = json.load(f)
+            all_samples = [all_samples[args.level][fold] for fold in all_samples[args.level].keys()]
+
+    for fold in range(0, 3): #range(args.numfolds):
         logpath = os.path.join(args.output_dir, f"train_fold_{fold:02}.txt")
         if os.path.exists(logpath):
             os.remove(logpath)
@@ -121,7 +130,7 @@ def main():
                         "optimizer": optimizer.state_dict(),
                         "lr_scheduler": lr_schedular.state_dict()
                     }, ckpt)
-                    ckpts.append(ckpt)
+                    ckpts.append(f"checkpoint_{epoch:04}_{fold:02}.pth")
                 with open(logpath, "a") as f:
                     f.write(json.dumps(log_stats) + "\n")
 
@@ -174,10 +183,10 @@ def test_ckpts():
             pf.write(json.dumps(performance, ensure_ascii=False, cls=JsonEncoder, indent=4, separators=(",", ":")))
 
 if __name__ == "__main__":
-    # main()
+    main()
     # args = Arguments()
     # plot_logs(args.output_dir, log_name="train.txt", fields=("loss", "loss_ce", "loss_NW", "loss_preFoG", "loss_FoG", "class_error"))
-    test_ckpts()
+    # test_ckpts()
 
     # import glob
     # args = Arguments(log_=False)
