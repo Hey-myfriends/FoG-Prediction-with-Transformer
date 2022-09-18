@@ -26,7 +26,7 @@ class Arguments(object):
         self.clip_max_norm = 0.15
         self.lr_drop = 30
         self.gamma = 0.5
-        self.tag = "noPE"
+        self.tag = "with_dataAug"
         self.level = "episode" #"sample"
         self.output_dir = "./outputs_{}_{}".format(self.level, self.tag)
         self.n1 = 3
@@ -49,7 +49,7 @@ def main():
     random.seed(args.seed)
 
     in_chan, d_model, num_class, cls_type, aux_loss = 6, 128, 3, "cls_token", True
-    cls_weight, focal_scaler = torch.ones(num_class), 2
+    cls_weight, focal_scaler, aug = torch.ones(num_class), 2, True
     logger.info(f"in_chan: {in_chan}, d_model: {d_model}, num_class: {num_class}, cls_type: {cls_type}, aux_loss: {aux_loss}")
 
     if args.resume_fold_split is None:
@@ -74,7 +74,8 @@ def main():
             if train_fold != fold:
                 train_samples.extend(all_samples[train_fold])
 
-        dataset_train = build_dataset(train_samples[:], rootpth=args.rootpath, level=args.level, mode="train")
+        # pdb.set_trace()
+        dataset_train = build_dataset(train_samples[:], rootpth=args.rootpath, level=args.level, mode="train", aug=aug)
         dataset_val = build_dataset(val_samples, rootpth=args.rootpath, level=args.level, mode="val")
 
         data_loader_train = DataLoader(dataset_train, args.batchsize, shuffle=True, collate_fn=collate_fn)

@@ -4,10 +4,12 @@ import torch
 import os, pdb, glob, random
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
+from .DataAug import DA_Rotation
 rootpath = "/home/bebin.huang/Code/FoG_prediction/FoG_datasets2"
 
 class FoG_dataset(Dataset):
-    def __init__(self, samples: list, rootpth = None, level="episode", mode="train") -> None:
+    def __init__(self, samples: list, rootpth = None, level="episode", mode="train", 
+                aug=False) -> None:
         super().__init__()
         assert mode in ["train", "val"]
         self.rootpath = rootpath
@@ -16,6 +18,7 @@ class FoG_dataset(Dataset):
         self.samples = samples
         self.level = level
         self.mode = mode
+        self.aug = aug
         # pdb.set_trace()
         if level == "episode":
             sam_all = []
@@ -38,17 +41,20 @@ class FoG_dataset(Dataset):
                 raise ValueError("Label error: must be 0, 1 or 2.")
         ratio = [preFoG*FoG, NW*FoG, NW*preFoG] # NW:preFoG:FoG
         ratio = [r/sum(ratio) for r in ratio]
-        logger.info("Mode = {}, total = {}, NW = [{}, {:.2f}], preFoG = [{}, {:.2f}], FoG = [{}, {:.2f}]".format(
-            self.mode, total, NW, ratio[0], preFoG, ratio[1], FoG, ratio[2]
+        logger.info("Mode = {}, aug = {}, total = {}, NW = [{}, {:.2f}], preFoG = [{}, {:.2f}], FoG = [{}, {:.2f}]".format(
+            self.mode, self.aug, total, NW, ratio[0], preFoG, ratio[1], FoG, ratio[2]
         ))
         return torch.Tensor(ratio)
 
     def __getitem__(self, index):
         data = np.loadtxt(os.path.join(self.rootpath, self.samples[index]))
-        # label = self.samples[index].split("_")[-1][0]
-        # label = int(label)
+        data = torch.FloatTensor(data)
         label = self.samples[index]
-        return torch.FloatTensor(data), label
+        if self.aug:
+            data_aug = DA_Rotation(data)
+            return [data, data_aug], [label, label]
+        
+        return data, label
 
     def __len__(self):
         return len(self.samples)
@@ -56,12 +62,16 @@ class FoG_dataset(Dataset):
 def collate_fn(batch: list):
     data, labels, info = [], [], []
     for d, lab in batch:
-        data.append(d)
-        info.append(lab)
-        labels.append(int(lab.split("_")[-1].split(".")[0]))
+        if isinstance(d, list):
+            data.extend(d)
+            info.extend(lab)
+            labels.extend([int(l.split("_")[-1].split(".")[0]) for l in lab])
+        else:
+            data.append(d)
+            info.append(lab)
+            labels.append(int(lab.split("_")[-1].split(".")[0]))
     data = torch.stack(data, dim=0)
     labels = torch.LongTensor(labels)
-    # labels = {"info": info, "labels": labels}
     return data, {"info": info, "labels": labels}
 
 def split_n_fold(n=10, rootpth = None, level="episode", seed=10086): # level = episode or sample
@@ -95,8 +105,8 @@ def split_n_fold(n=10, rootpth = None, level="episode", seed=10086): # level = e
     else:
         raise ValueError("level error!")
 
-def build_dataset(samples, rootpth = None, level="episode", mode="train"):
-    return FoG_dataset(samples, rootpth = rootpth, level=level, mode=mode)
+def build_dataset(samples, rootpth = None, level="episode", mode="train", aug=False):
+    return FoG_dataset(samples, rootpth = rootpth, level=level, mode=mode, aug=aug)
 
 if __name__ == "__main__":
     pdb.set_trace()

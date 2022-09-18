@@ -45,9 +45,10 @@ def test(model: nn.Module, val_dataloader: Iterable, output_dir: str, device: to
         prec = metrics.precision_score(targets, preds, average=None)
         # auc = metrics.roc_auc_score(targets, preds, average=None, multi_class="ovr")
         auc = None
-        geom = np.sqrt(sens * prec)
         cmat = metrics.confusion_matrix(targets, preds)
-        samples_level = {"accu": accu, "sens": sens.tolist(), "prec": prec.tolist(), "geom": geom.tolist(), 
+        spec = cal_spec(cmat)
+        geom = np.sqrt(sens * spec)
+        samples_level = {"accu": accu, "sens": sens.tolist(), "spec": spec.tolist(), "prec": prec.tolist(), "geom": geom.tolist(), 
                         "auc": auc, "f1_score": f1_score.tolist(), "cmat": cmat.tolist()}
         logger.info("Fold {}, epoch {} sample level performance: ".format(ckpt["fold"], ckpt["epoch"]) + str(samples_level))
         performance.update({"Fold_{}_epoch_{}_sampleLevel".format(ckpt["fold"], ckpt["epoch"]): samples_level})
@@ -57,6 +58,17 @@ def test(model: nn.Module, val_dataloader: Iterable, output_dir: str, device: to
             logger.info("Fold {}, epoch {} episode level performance: ".format(ckpt["fold"], ckpt["epoch"]) + str(episode_metrics_dict) + "\n\n")
             performance["Fold_{}_epoch_{}_episodeLevel".format(ckpt["fold"], ckpt["epoch"])] = episode_metrics_dict
     return performance
+
+def cal_spec(cmat: np.array):
+    specs = []
+    ALL = np.sum(cmat)
+    for i in range(cmat.shape[0]):
+        TP_i = cmat[i, i]
+        FP_i = np.sum(cmat[i, :])
+        FN_i = np.sum(cmat[:, i])
+        TN_i = ALL - TP_i - FP_i - FN_i
+        specs.append(TN_i/(TN_i+FP_i))
+    return np.arrsy(specs)
 
 def cal_episode_metrics(targets: np.array, targets_info: list, preds: np.array, output_dir: str, n1=3, n2=3, header=""):
     # parse targets_info to info

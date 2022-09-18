@@ -43,8 +43,8 @@ class FoG_Net(nn.Module):
             cls_token = self.cls_token.repeat(bs, 1, 1).to(features.device) # (bs, L, d_model)
             features = torch.cat((cls_token, features), dim=2) # TODO
         # pos = self.pos_embed.unsqueeze(0).repeat(bs, 1, 1) # not properly
-        # pos = self.pos_embed(L+1 if self.cls_type == "cls_token" else L).unsqueeze(0).repeat(bs, 1, 1)
-        pos = None
+        pos = self.pos_embed(L+1 if self.cls_type == "cls_token" else L).unsqueeze(0).repeat(bs, 1, 1)
+        # pos = None
         hs = self.encoder(features, src_key_padding_mask=None, pos=pos)
         if self.cls_type == "cls_token":
             output_class = self.cls_embed(hs[:, :, 0, :])

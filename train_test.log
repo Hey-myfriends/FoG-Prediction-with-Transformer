@@ -1,7 +1,7 @@
-2022-09-17 11:00:56,643 - INFO     - main.py              - Line:19   - This machine has 1 gpu...
-2022-09-17 11:00:56,643 - INFO     - main.py              - Line:39   - numfolds: 10, bs: 128, epoch: 100, lr_drop: 30, gamma: 0.5, level: episode, tagnoPE, [n1, n2]: [3, 3], seed: 10086
-2022-09-17 11:00:56,644 - INFO     - main.py              - Line:53   - in_chan: 6, d_model: 128, num_class: 3, cls_type: cls_token, aux_loss: True
-2022-09-17 11:00:58,207 - INFO     - FoG_dataset.py       - Line:41   - Mode = train, total = 13474, NW = [4610, 0.28], preFoG = [2423, 0.53], FoG = [6441, 0.20]
-2022-09-17 11:00:58,383 - INFO     - FoG_dataset.py       - Line:41   - Mode = val, total = 1470, NW = [420, 0.33], preFoG = [280, 0.49], FoG = [770, 0.18]
-2022-09-17 11:00:59,725 - INFO     - main.py              - Line:90   - number of params: 3382695
-2022-09-17 11:00:59,727 - INFO     - main.py              - Line:100  - Fold 0: Start training...
+2022-09-18 15:07:38,554 - INFO     - main.py              - Line:19   - This machine has 1 gpu...
+2022-09-18 15:07:38,555 - INFO     - main.py              - Line:39   - numfolds: 10, bs: 128, epoch: 100, lr_drop: 30, gamma: 0.5, level: episode, tagwith_dataAug, [n1, n2]: [3, 3], seed: 10086
+2022-09-18 15:07:38,555 - INFO     - main.py              - Line:53   - in_chan: 6, d_model: 128, num_class: 3, cls_type: cls_token, aux_loss: True
+2022-09-18 15:07:40,035 - INFO     - FoG_dataset.py       - Line:44   - Mode = train, aug = True, total = 13474, NW = [4610, 0.28], preFoG = [2423, 0.53], FoG = [6441, 0.20]
+2022-09-18 15:07:40,199 - INFO     - FoG_dataset.py       - Line:44   - Mode = val, aug = False, total = 1470, NW = [420, 0.33], preFoG = [280, 0.49], FoG = [770, 0.18]
+2022-09-18 15:07:41,674 - INFO     - main.py              - Line:91   - number of params: 3382695
+2022-09-18 15:07:41,677 - INFO     - main.py              - Line:101  - Fold 0: Start training...
