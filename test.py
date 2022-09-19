@@ -64,11 +64,11 @@ def cal_spec(cmat: np.array):
     ALL = np.sum(cmat)
     for i in range(cmat.shape[0]):
         TP_i = cmat[i, i]
-        FP_i = np.sum(cmat[i, :])
-        FN_i = np.sum(cmat[:, i])
+        FN_i = np.sum(cmat[i, :]) - TP_i
+        FP_i = np.sum(cmat[:, i]) - TP_i
         TN_i = ALL - TP_i - FP_i - FN_i
         specs.append(TN_i/(TN_i+FP_i))
-    return np.arrsy(specs)
+    return np.array(specs)
 
 def cal_episode_metrics(targets: np.array, targets_info: list, preds: np.array, output_dir: str, n1=3, n2=3, header=""):
     # parse targets_info to info
