@@ -61,7 +61,7 @@ class SEC_ALSTM(nn.Module):
         x = self.layer5(x)
         x = self.ALSTM(x)
         x = self.layer7(x)
-        return x
+        return {"pred_logits": x}
 
 class SE_blk(nn.Module): # squeeze and excitation block
     def __init__(self, in_c, r=2):

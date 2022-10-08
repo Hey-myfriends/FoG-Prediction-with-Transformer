@@ -9,6 +9,8 @@ import torch.nn.functional as F
 from .backbone import build_backbone
 from .encoder import build_encoder_FoG
 from .positional_encoding import PositionalEncoding
+from .SEC_ALSTM import SEC_ALSTM
+from .deepFoG import deepFoG
 from typing import Optional
 import sklearn.metrics as metrics
 
@@ -147,17 +149,20 @@ def accuracy(outputs: Tensor, targets: Tensor):
 
 def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=torch.ones(3), aux_loss=True, focal_scaler=2):
     
-    backbone = build_backbone(in_chan, d_model)
-    encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=6, dim_feedforward=4*d_model, 
-                                normalize_before=True, return_intermediate=True if aux_loss else False)
-    model = FoG_Net(backbone, encoder, num_class, cls_type=cls_type, aux_loss=aux_loss)
+    # backbone = build_backbone(in_chan, d_model)
+    # encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=6, dim_feedforward=4*d_model, 
+    #                             normalize_before=True, return_intermediate=True if aux_loss else False)
+    # model = FoG_Net(backbone, encoder, num_class, cls_type=cls_type, aux_loss=aux_loss)
+
+    # model = SEC_ALSTM(in_chan, 64, num_classes=num_class, hid_rnn=d_model)
+    model = deepFoG(in_chan)
     
     weight_dict = {"loss_ce": 1}
-    if aux_loss:
-        aux_weight_dict = {}
-        for i in range(encoder.num_layers):
-            aux_weight_dict.update({k + f"_{i}": v for k, v in weight_dict.items()})
-        weight_dict.update(aux_weight_dict)
+    # if aux_loss:
+    #     aux_weight_dict = {}
+    #     for i in range(encoder.num_layers):
+    #         aux_weight_dict.update({k + f"_{i}": v for k, v in weight_dict.items()})
+    #     weight_dict.update(aux_weight_dict)
 
     losses = ["labels"]
     criterion = SetCriterion(num_class, losses, weight_dict, cls_weight, focal_scaler=focal_scaler)
