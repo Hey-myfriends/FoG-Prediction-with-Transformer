@@ -1,17 +1,16 @@
 
 import pdb, sys, os
 # print("Current path is ", os.getcwd())
-if os.getcwd() not in sys.path:
-    sys.path.insert(0, "/home/bebin.huang/Code/FoG_prediction/FoG_prediction-new")
+sys.path.insert(0, "/home/bebin.huang/Code/FoG_prediction/FoG_prediction-new")
 print(sys.path[0])
 import torch
 from torch import nn, Tensor
 import torch.nn.functional as F
-from backbone import build_backbone
-from encoder import build_encoder_FoG
-from positional_encoding import PositionalEncoding
-from SEC_ALSTM import SEC_ALSTM
-from deepFoG import deepFoG
+from models.backbone import build_backbone
+from models.encoder import build_encoder_FoG
+from models.positional_encoding import PositionalEncoding
+from models.SEC_ALSTM import SEC_ALSTM
+from models.deepFoG import deepFoG
 from typing import Optional
 import sklearn.metrics as metrics
 
