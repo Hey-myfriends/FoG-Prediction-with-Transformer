@@ -16,7 +16,7 @@ class Arguments(object):
     def __init__(self, log_=True) -> None:
         logger.info(f"This machine has {torch.cuda.device_count()} gpu...")
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.rootpath = ["/home/bebin.huang/Code/FoG_prediction/FoG_datasets_window_{}_step_0.5".format(i) for i in [3,]] ## dataset path
+        self.rootpath = ["/home/bebin.huang/Code/FoG_prediction/FoG_datasets_window_{}_step_0.5".format(i) for i in [1.5, 2.5]] ## dataset path
         self.numfolds = 10
         self.seed = 10086
         self.batchsize = 128

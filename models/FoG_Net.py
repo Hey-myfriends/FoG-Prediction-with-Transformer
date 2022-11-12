@@ -1,21 +1,22 @@
-from multiprocessing import reduction
+
 import pdb, sys, os
-print("Current path is ", os.getcwd())
-# if os.getcwd() not in sys.path:
-    # sys.path.append(os.getcwd())
+# print("Current path is ", os.getcwd())
+if os.getcwd() not in sys.path:
+    sys.path.insert(0, "/home/bebin.huang/Code/FoG_prediction/FoG_prediction-new")
+print(sys.path[0])
 import torch
 from torch import nn, Tensor
 import torch.nn.functional as F
-from .backbone import build_backbone
-from .encoder import build_encoder_FoG
-from .positional_encoding import PositionalEncoding
-from .SEC_ALSTM import SEC_ALSTM
-from .deepFoG import deepFoG
+from backbone import build_backbone
+from encoder import build_encoder_FoG
+from positional_encoding import PositionalEncoding
+from SEC_ALSTM import SEC_ALSTM
+from deepFoG import deepFoG
 from typing import Optional
 import sklearn.metrics as metrics
 
 class FoG_Net(nn.Module):
-    def __init__(self, backbone, encoder, num_classes, cls_type="cls_token", aux_loss=False) -> None:
+    def __init__(self, backbone, encoder, num_classes, cls_type="cls_token", aux_loss=False, return_attn_weights=False) -> None:
         super().__init__()
 
         assert cls_type == "cls_token" or cls_type == "global_ave", "cls_type error: must be cls_token or global_ave."
@@ -33,9 +34,10 @@ class FoG_Net(nn.Module):
         if cls_type == "cls_token":
             # self.pos_embed = nn.Embedding(hidden_dim, 24+1).weight
             self.cls_token = torch.randn(hidden_dim, 1)
+        self.return_attn_weights = return_attn_weights
 
     def forward(self, x):
-        # pdb.set_trace()
+        pdb.set_trace()
         features = self.backbone(x)
         features = self.input_proj(features)
 
@@ -47,7 +49,7 @@ class FoG_Net(nn.Module):
         # pos = self.pos_embed.unsqueeze(0).repeat(bs, 1, 1) # not properly
         pos = self.pos_embed(L+1 if self.cls_type == "cls_token" else L).unsqueeze(0).repeat(bs, 1, 1)
         # pos = None
-        hs = self.encoder(features, src_key_padding_mask=None, pos=pos)
+        hs, attn_weights = self.encoder(features, src_key_padding_mask=None, pos=pos)
         if self.cls_type == "cls_token":
             output_class = self.cls_embed(hs[:, :, 0, :])
         else:
@@ -55,7 +57,7 @@ class FoG_Net(nn.Module):
         out = {"pred_logits": output_class[-1]}
         if self.aux_loss:
             out["aux_outputs"] = self._set_aux_outputs(output_class)
-        return out
+        return out, attn_weights if self.return_attn_weights else out # (num_layers, N,num_heads,L,S)
 
     @torch.jit.unused
     def _set_aux_outputs(self, out_class):
@@ -147,22 +149,22 @@ def accuracy(outputs: Tensor, targets: Tensor):
     accu = metrics.accuracy_score(targets.cpu().numpy(), pred.cpu().numpy())
     return accu
 
-def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=torch.ones(3), aux_loss=True, focal_scaler=2):
+def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=torch.ones(3), aux_loss=True, focal_scaler=2, return_attn_weights=False):
     
-    # backbone = build_backbone(in_chan, d_model)
-    # encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=6, dim_feedforward=4*d_model, 
-    #                             normalize_before=True, return_intermediate=True if aux_loss else False)
-    # model = FoG_Net(backbone, encoder, num_class, cls_type=cls_type, aux_loss=aux_loss)
+    backbone = build_backbone(in_chan, d_model)
+    encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=6, dim_feedforward=4*d_model, 
+                                normalize_before=True, return_intermediate=True if aux_loss else False)
+    model = FoG_Net(backbone, encoder, num_class, cls_type=cls_type, aux_loss=aux_loss, return_attn_weights=return_attn_weights)
 
     # model = SEC_ALSTM(in_chan, 64, num_classes=num_class, hid_rnn=d_model)
-    model = deepFoG(in_chan)
+    # model = deepFoG(in_chan)
     
     weight_dict = {"loss_ce": 1}
-    # if aux_loss:
-    #     aux_weight_dict = {}
-    #     for i in range(encoder.num_layers):
-    #         aux_weight_dict.update({k + f"_{i}": v for k, v in weight_dict.items()})
-    #     weight_dict.update(aux_weight_dict)
+    if aux_loss:
+        aux_weight_dict = {}
+        for i in range(encoder.num_layers):
+            aux_weight_dict.update({k + f"_{i}": v for k, v in weight_dict.items()})
+        weight_dict.update(aux_weight_dict)
 
     losses = ["labels"]
     criterion = SetCriterion(num_class, losses, weight_dict, cls_weight, focal_scaler=focal_scaler)
@@ -175,5 +177,5 @@ if __name__ == "__main__":
     pdb.set_trace()
     in_chan, d_model, num_class = x.shape[1], 128, 3
     model, _ = build(in_chan, d_model, num_class, cls_type="global_ave")
-    y = model(x)
+    y, attn_weights = model(x)
     print(x.shape, y["pred_logits"].shape)

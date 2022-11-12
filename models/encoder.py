@@ -52,19 +52,21 @@ class TransformerEncoder_with_intermid(nn.Module):
         
         output = src
 
-        intermidiate = []
+        intermidiate, attn_weights = [], []
         for layer in self.layers:
             if self.return_intermidiate:
                 intermidiate.append(self.norm(output) if self.norm is not None else output)
-            output = layer(output, src_mask=mask,
+            output, attn_weight_now = layer(output, src_mask=mask,
                            src_key_padding_mask=src_key_padding_mask, pos=pos)
+            attn_weights.append(attn_weight_now)  # (N,num_heads,L,S)
             
         intermidiate.append(self.norm(output) if self.norm is not None else output)
         intermidiate = torch.stack(intermidiate, dim=0)
+        attn_weights = torch.stack(attn_weights, dim=0)  # (num_layers, N,num_heads,L,S)
         if self.return_intermidiate:
-            return intermidiate.transpose(1, 2)
+            return intermidiate.transpose(1, 2), attn_weights
 
-        return intermidiate[-1].unsqueeze(0).transpose(1, 2)
+        return intermidiate[-1].unsqueeze(0).transpose(1, 2), attn_weights
 
 class Transformer(nn.Module):
 
@@ -202,37 +204,42 @@ class TransformerEncoderLayer(nn.Module):
                      src,
                      src_mask: Optional[Tensor] = None,
                      src_key_padding_mask: Optional[Tensor] = None,
-                     pos: Optional[Tensor] = None):
+                     pos: Optional[Tensor] = None,
+                     average_attn_weights = True):
         q = k = self.with_pos_embed(src, pos)
-        src2 = self.self_attn(q, k, value=src, attn_mask=src_mask, key_padding_mask=src_key_padding_mask)[0]
+        src2, attn_weights = self.self_attn(q, k, value=src, attn_mask=src_mask, key_padding_mask=src_key_padding_mask,
+                average_attn_weights=average_attn_weights)
         src = src + self.dropout1(src2)
         src = self.norm1(src)
         src2 = self.linear2(self.dropout(self.activation(self.linear1(src))))
         src = src + self.dropout2(src2)
         src = self.norm2(src)
-        return src
+        return src, attn_weights # (N,num_heads,L,S)
 
     def forward_pre(self, src,
                     src_mask: Optional[Tensor] = None,
                     src_key_padding_mask: Optional[Tensor] = None,
-                    pos: Optional[Tensor] = None):
+                    pos: Optional[Tensor] = None,
+                    average_attn_weights = True):
         src2 = self.norm1(src)
         q = k = self.with_pos_embed(src2, pos)
-        src2 = self.self_attn(q, k, value=src2, attn_mask=src_mask,
-                              key_padding_mask=src_key_padding_mask)[0]
+        src2, attn_weights = self.self_attn(q, k, value=src2, attn_mask=src_mask,
+                              key_padding_mask=src_key_padding_mask, need_weights=True,
+                              average_attn_weights=average_attn_weights)
         src = src + self.dropout1(src2)
         src2 = self.norm2(src)
         src2 = self.linear2(self.dropout(self.activation(self.linear1(src2))))
         src = src + self.dropout2(src2)
-        return src
+        return src, attn_weights # (N,num_heads,L,S)
 
     def forward(self, src,
                 src_mask: Optional[Tensor] = None,
                 src_key_padding_mask: Optional[Tensor] = None,
-                pos: Optional[Tensor] = None):
+                pos: Optional[Tensor] = None,
+                average_attn_weights = False):
         if self.normalize_before:
-            return self.forward_pre(src, src_mask, src_key_padding_mask, pos)
-        return self.forward_post(src, src_mask, src_key_padding_mask, pos)
+            return self.forward_pre(src, src_mask, src_key_padding_mask, pos, average_attn_weights)
+        return self.forward_post(src, src_mask, src_key_padding_mask, pos, average_attn_weights)
 
 
 class TransformerDecoderLayer(nn.Module):
