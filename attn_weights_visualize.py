@@ -27,7 +27,7 @@ class Arguments(object):
         self.clip_max_norm = 0.15
         self.lr_drop = 30
         self.gamma = 0.5
-        self.tag = ""
+        self.tag = "1_encoderlayer"
         self.level = "episode" #"sample"
         self.output_dir = "./outputs_{}_{}".format(self.level, self.tag) if self.tag != "" else "./outputs_{}".format(self.level)
         self.n1 = 3
@@ -51,33 +51,35 @@ def attn_weights_vis():
     logger.info(f"in_chan: {in_chan}, d_model: {d_model}, num_class: {num_class}, cls_type: {cls_type}, aux_loss: {aux_loss}")
     # pdb.set_trace()
     samples_split = None
-    with open(os.path.join(args.output_dir, "all_samples.josn"), "r") as f:
+    with open(args.resume_fold_split, "r") as f:
         samples_split = json.load(f)
     if samples_split is None:
         logger.error("all_sample.json load error.")
         exit()
-    ckpt = "checkpoint_0029_00.pth"
+    ckpt = "checkpoint_0059_00.pth"
     fold = 0
     val_samples = samples_split[args.level]["{}".format(fold)]
     dataset_val = build_dataset(val_samples, rootpth=args.rootpath, level=args.level, mode="val")
     data_loader_val = DataLoader(dataset_val, args.batchsize, shuffle=False, collate_fn=collate_fn)
     model, _ = build_model(in_chan, d_model, num_class, cls_type=cls_type, aux_loss=aux_loss,
-                                cls_weight=None, focal_scaler=focal_scaler, return_attn_weights=return_attn_weights)
+                                cls_weight=None, focal_scaler=focal_scaler, 
+                                return_attn_weights=return_attn_weights, num_encoder_layers=1)
     model.to(args.device)
     model.eval()
     ckpt = torch.load(os.path.join(args.output_dir, ckpt))
     model.load_state_dict(ckpt["model"])
     pbar = tqdm(data_loader_val)
 
+    breakpoint()
     predictions, targets, attn_weights = [], [], []
     for samples, t in pbar:
         samples = samples.transpose(1, 2).to(args.device)
         targets.append(t["labels"])
 
-        outputs, attn_weight_now = model(samples)
+        outputs = model(samples)
         predictions.append(outputs["pred_logits"].cpu())
-        attn_weights.append(attn_weight_now.cpu())
-    # pdb.set_trace()
+        attn_weights.append(outputs["attn_weight"].cpu())
+    breakpoint()
     targets = torch.cat(targets, dim=0).numpy()
     predictions = torch.cat(predictions, dim=0).numpy()
     preds = predictions.argmax(axis=1)
@@ -91,9 +93,10 @@ def attn_weights_vis():
 
     fig_heatmap_with_head_3class(attn_weights2[:, (targets == 0)].mean(axis=1),
                                 attn_weights2[:, (targets == 1)].mean(axis=1),
-                                attn_weights2[:, (targets == 2)].mean(axis=1))
+                                attn_weights2[:, (targets == 2)].mean(axis=1),
+                                out_name="layer0_only1encoderlayer")
 
-def fig_heatmap_with_head_3class(attn_weights_NW, attn_weights_Pre_FoG, attn_weights_FoG):
+def fig_heatmap_with_head_3class(attn_weights_NW, attn_weights_Pre_FoG, attn_weights_FoG, out_name="layer0"):
     num_heads = attn_weights_NW.shape[1]
     fig, ax = plt.subplots(3, num_heads, figsize=(16, 5))
     for col in range(num_heads): # NW
@@ -120,7 +123,7 @@ def fig_heatmap_with_head_3class(attn_weights_NW, attn_weights_Pre_FoG, attn_wei
 
     plt.subplots_adjust(wspace=0.03, hspace=0.04)
     fig.supxlabel("Heads of Attention.", fontsize=17)
-    fig.savefig("./heatmap/{}.png".format("layer0"), bbox_inches="tight", dpi=600)
+    fig.savefig("./heatmap/{}.png".format(out_name), bbox_inches="tight", dpi=600)
     plt.close()
 
 def fig_heatmap_with_head_1class(attn_weights, tag="NW"):

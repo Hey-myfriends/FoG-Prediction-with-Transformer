@@ -36,7 +36,6 @@ class FoG_Net(nn.Module):
         self.return_attn_weights = return_attn_weights
 
     def forward(self, x):
-        pdb.set_trace()
         features = self.backbone(x)
         features = self.input_proj(features)
 
@@ -56,7 +55,10 @@ class FoG_Net(nn.Module):
         out = {"pred_logits": output_class[-1]}
         if self.aux_loss:
             out["aux_outputs"] = self._set_aux_outputs(output_class)
-        return out, attn_weights if self.return_attn_weights else out # (num_layers, N,num_heads,L,S)
+
+        if self.return_attn_weights:
+            out["attn_weight"] = attn_weights
+        return out # (num_layers, N,num_heads,L,S)
 
     @torch.jit.unused
     def _set_aux_outputs(self, out_class):
@@ -148,10 +150,11 @@ def accuracy(outputs: Tensor, targets: Tensor):
     accu = metrics.accuracy_score(targets.cpu().numpy(), pred.cpu().numpy())
     return accu
 
-def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=torch.ones(3), aux_loss=True, focal_scaler=2, return_attn_weights=False):
+def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=torch.ones(3), aux_loss=True, focal_scaler=2, 
+        return_attn_weights=False, num_encoder_layers=6):
     
     backbone = build_backbone(in_chan, d_model)
-    encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=6, dim_feedforward=4*d_model, 
+    encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=num_encoder_layers, dim_feedforward=4*d_model, 
                                 normalize_before=True, return_intermediate=True if aux_loss else False)
     model = FoG_Net(backbone, encoder, num_class, cls_type=cls_type, aux_loss=aux_loss, return_attn_weights=return_attn_weights)
 
