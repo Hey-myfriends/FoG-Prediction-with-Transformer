@@ -42,7 +42,7 @@ def output(metrics_allfold: list):
         FalseAlarmRate.append(m["episodeLevel_best"][0]["false_alarmed"][1])
         # detected_episodes = [v[0] for v in m["episodeLevel_best"][0]["forcast_windows"].values() if isinstance(v[2], int)]
         pred_margin = [v[2] for v in m["episodeLevel_best"][0]["forcast_windows"].values() if isinstance(v[2], int)]
-        PredictedMargin.append(sum(pred_margin)/len(pred_margin))
+        PredictedMargin.append(sum(pred_margin) * stepsize / len(pred_margin))
     # pdb.set_trace()
     print("sens: ", sens, "\nspecs: ", specs, "\nprecs: ", precs, "\nf1_score: ", f1_score)
     sens, specs = sum(sens) / len(sens), sum(specs) / len(specs)
@@ -76,6 +76,8 @@ def output2(metrics_allfold: list):
 
 output_dir = "./outputs_episode_with_diff_window_stacked"
 jsons = [p for p in os.listdir(output_dir) if p.endswith(".json")]
+# print([eval(x.split("_")[-3]) for x in jsons])
+jsons = sorted(jsons, key=lambda x: eval(x.split("_")[-3]))
 
 for j in jsons:
     window = j.split("_")[-3]
@@ -100,5 +102,5 @@ for j in jsons:
             raise ValueError("metric key error.")
 
     print("\n\n{} performance: ".format(j))
-    output([metrics_best])
+    output2([metrics_best])
     

@@ -9,7 +9,6 @@ if rootpth not in sys.path:
 
 import logging
 from get_logger import get_root_logger
-logger = get_root_logger(level=logging.DEBUG, console_out=True, logName="./create_datasets.log")
 # fmt = "%(asctime)s - %(funcName)s - %(lineno)s - %(levelname)s - %(message)s"
 # logging.basicConfig(level=logging.DEBUG, filename="create_datasets.log", filemode="w",
     # format=fmt)
@@ -26,14 +25,14 @@ cols = [
         "Label" # 60
         ]
 fs, fs_eeg = 500, 1000 #Hz
-window, step = 3, 0.5
+window, step = 2.5, 0.5
 pre_FoG = 5
 select_cols = ['LShankACCX', 'LShankACCY', 'LShankACCZ', 'LShankGYROX', 'LShankGYROY', 'LShankGYROZ']
-
+logger = get_root_logger(level=logging.INFO, console_out=True, logName="./create_datasets_window_{}_step_{}.log".format(window, step))
 
 def create_datasets():
     rootpath = "/home/bebin.huang/Code/FoG_prediction/FoG_datasets/Filtered Data"
-    output_path = "/home/bebin.huang/Code/FoG_prediction/FoG_datasets2"
+    output_path = "/home/bebin.huang/Code/FoG_prediction/FoG_datasets_window_{}_step_{}".format(window, step)
     if os.path.exists(output_path):
         logger.info("output path exists, delete previous dataset...")
         shutil.rmtree(output_path, ignore_errors=True)
@@ -190,12 +189,42 @@ def statistic(): # 选用 LShank ACC+GYRO最合适，需排除 002，004, 005(no
         cnt = [[k, v] for k, v in cnt.items()]
         cnt = sorted(cnt, key=lambda x: x[1], reverse=True)
         print("missing data deatils: \n\t", cnt)
-
+        
+        # pdb.set_trace()
         fig, ax = plt.subplots(1, 1, figsize=(16, 9))
-        n, bins, _ = ax.hist(durations, bins=30, edgecolor="k", density=True, cumulative=False)
+        n, bins, _ = ax.hist(durations, bins=list(range(0, int(max(durations)/10)*10+12, 5)), edgecolor="k", density=False, cumulative=False, color="orange")
+        ax.set(xlim=(0, 250))
+        # plt.xticks(list(range(0, int(max(durations))+20, 20)), fontsize=12)
+        plt.xticks([bins[i] for i in range(0, len(bins), 4)], fontsize=15)
+        ytick = list(range(0, 130, 20))
+        plt.yticks(ytick, fontsize=15)
+        ax.set_xlabel(xlabel="Duration (s)", fontsize=20)
+        ax.set_ylabel(ylabel="Number of FoG episodes", fontsize=20)
+        ax.set_ylim((0, ytick[-1]))
+        ax.spines["right"].set_visible(False)
+        ax.spines["top"].set_visible(False)
+        ax.spines["left"].set_visible(False)
+
+        x = [(bins[i]+bins[i+1])/2 for i in range(len(bins)-1)]
+        y = [i/sum(n) for i in n]
+        print(x, y, len(x) == len(y))
+        ax2 = ax.twinx()
+        # ax2.plot(np.array(x), np.array(y)*100, color="b", linewidth=2)
+        ax2.set_ylabel("Percent (%)", fontsize=20)
+        ax2.grid(axis="y", alpha=1.0)
+        # ax2.set_ylim([0, 0.6])
+        plt.yticks([yt/len(durations)*100 for yt in ytick], fontsize=15)
+        ax2.set_ylim((0, ytick[-1]/len(durations)*100))
+        # print([yt/sum(durations) for yt in ytick])
+        ax2.spines["right"].set_visible(False)
+        ax2.spines["top"].set_visible(False)
+        ax2.spines["left"].set_visible(False)
+        # for num, bin in zip(n, bins):
+            # ax.annotate(num, xy=(bin, num), xytext=(bin+1.5, num+0.5))
         print("total: ", len(durations), "\nn: \n", n, "\nbins: \n", bins)
         fig.savefig(os.path.join(os.path.dirname(descrip_path), "FoG_hist.png"), dpi=600, bbox_inches="tight")
         plt.close()
+        print(int(max(durations)/10)*10+10)
 
 def FoG_details(data: pd.DataFrame):
     labels = data["Label"].to_numpy()

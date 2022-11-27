@@ -7,12 +7,13 @@ Copy-paste from torch.nn.Transformer with modifications:
     * extra LN at the end of encoder is removed
     * decoder returns a stack of activations from all decoding layers
 """
-import copy, pdb
+import copy
 from typing import Optional
 
 import torch
 import torch.nn.functional as F
 from torch import nn, Tensor
+import math
 
 def build_encoder_FoG(d_model=512, nhead=8, num_encoder_layers=6,
                  dim_feedforward=2048, dropout=0.1,
@@ -46,7 +47,6 @@ class TransformerEncoder_with_intermid(nn.Module):
                 src_key_padding_mask: Optional[Tensor] = None,
                 pos: Optional[Tensor] = None):
         
-        # pdb.set_trace()
         src = src.permute(2, 0, 1)
         pos = pos.permute(2, 0, 1) if pos is not None else None
         
@@ -346,6 +346,47 @@ def build_transformer():
         return_intermediate_dec=True,
     )
 
+class MultiHeadAttention_with_constant(nn.Module):
+    def __init__(self, d_model, nhead, seq_len=32, constant_head=0, dropout=0.1) -> None:
+        super().__init__()
+        assert d_model % nhead == 0
+        assert nhead >= constant_head
+        self.d_model = d_model
+        self.d_k = d_model // nhead
+        self.nhead = nhead
+        self.constant_head = constant_head
+        self.seq_len = seq_len
+        self.dropout = nn.Dropout(p=dropout)
+        self.linears = nn.ModuleList([nn.Linear(self.d_model, self.d_model) for _ in range(4)])
+        self.constant_scores = nn.Parameter(torch.rand(self.constant_head, self.seq_len, self.seq_len)) if 0 < self.constant_head <= self.nhead else None
+
+    def forward(self, query, key, value, **kwargs):
+        breakpoint()
+        if self.seq_len != value.shape[1] and self.constant_scores is not None:
+            print("Note: Predefined seq_len not equal to given data, replace seq_len {} with {}.".format(self.seq_len, value.shape[1]))
+            self.seq_len = value.shape[1]
+            self.constant_scores = nn.Parameter(torch.rand(self.constant_head, self.seq_len, self.seq_len)).to(value.device)
+        
+        bs = value.shape[0]
+        q_nhead, k_nhead, v_nhead = [l(x) for l, x in zip(self.linears, (query, key, value))]
+        q_nhead, k_nhead, v_nhead = [x.view(bs, -1, self.nhead, self.d_k).transpose(1, 2) for x in (q_nhead, k_nhead, v_nhead)]
+
+        if self.constant_head < self.nhead:
+            scores = torch.matmul(q_nhead[:, self.constant_head:self.nhead], k_nhead[:, self.constant_head:self.nhead].transpose(-2, -1)) / math.sqrt(self.d_k)
+        elif self.constant_head == self.nhead:
+            scores = None
+        else:
+            raise ValueError("Error! constant head bigger than nhead.")
+
+        if self.constant_scores is not None:
+            constant_scores = self.constant_scores.repeat((bs, 1, 1, 1))
+            scores = torch.cat((constant_scores, scores), dim=1) if scores is not None else constant_scores
+        scores = F.softmax(scores, dim=-1)
+        scores = self.dropout(scores)
+        results = torch.matmul(v_nhead, scores)
+        results = results.transpose(1, 2).contiguous().view(bs, -1, self.nhead*self.d_k) # concatenate all heads
+        results = self.linears[-1](results)
+        return results, scores
 
 def _get_activation_fn(activation):
     """Return an activation function given a string"""
@@ -368,7 +409,7 @@ if __name__ == "__main__":
     pos_embed = torch.rand(4, 256, 17).to(device)
     model = build_encoder_FoG(d_model=src.shape[1], dim_feedforward=4*src.shape[1], normalize_before=True, return_intermediate=True).to(device)
 
-    pdb.set_trace()
+    breakpoint()
     # y = model(src, mask, query_embed.weight, pos_embed)
     y = model(src, src_key_padding_mask=None, pos=pos_embed)
     print(y[0].shape, y[1].shape)
