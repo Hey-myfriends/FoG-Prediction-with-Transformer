@@ -26,12 +26,12 @@ class Arguments(object):
         self.clip_max_norm = 0.15
         self.lr_drop = 30
         self.gamma = 0.5
-        self.tag = "1_encoderlayer_constant_head"
+        self.tag = "1_encoderlayer_constant_head_7"
         self.level = "episode" #"sample"
         self.output_dir = "./outputs_{}_{}".format(self.level, self.tag)
         self.n1 = 3
         self.n2 = 3
-        self.resume_fold_split = "./outputs_episode/all_samples.josn"
+        self.resume_fold_split = "./all_samples.josn"
         if log_:
             self.log()
 
@@ -50,6 +50,7 @@ def main():
 
     in_chan, d_model, num_class, cls_type, aux_loss = 6, 128, 3, "cls_token", True
     cls_weight, focal_scaler, num_encoder_layers = torch.ones(num_class), 2, 1
+    constant_head = 7
     logger.info(f"in_chan: {in_chan}, d_model: {d_model}, num_class: {num_class}, cls_type: {cls_type}, aux_loss: {aux_loss}")
 
     if args.resume_fold_split is None:
@@ -82,7 +83,7 @@ def main():
 
         model, criterion = build_model(in_chan, d_model, num_class, cls_type=cls_type, aux_loss=aux_loss,
                                 cls_weight=dataset_train.cls_weight, focal_scaler=focal_scaler, 
-                                num_encoder_layers=num_encoder_layers, return_attn_weights=False)
+                                num_encoder_layers=num_encoder_layers, return_attn_weights=False, constant_head=constant_head)
         model.to(args.device)
         criterion.to(args.device)
 

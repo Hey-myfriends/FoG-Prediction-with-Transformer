@@ -151,11 +151,11 @@ def accuracy(outputs: Tensor, targets: Tensor):
     return accu
 
 def build(in_chan, d_model, num_class, cls_type="cls_token", cls_weight=torch.ones(3), aux_loss=True, focal_scaler=2, 
-        return_attn_weights=False, num_encoder_layers=6):
+        return_attn_weights=False, num_encoder_layers=6, constant_head=0):
     
     backbone = build_backbone(in_chan, d_model)
     encoder = build_encoder_FoG(d_model=d_model, nhead=8, num_encoder_layers=num_encoder_layers, dim_feedforward=4*d_model, 
-                                normalize_before=True, return_intermediate=True if aux_loss else False)
+                                normalize_before=True, return_intermediate=True if aux_loss else False, constant_head=constant_head)
     model = FoG_Net(backbone, encoder, num_class, cls_type=cls_type, aux_loss=aux_loss, return_attn_weights=return_attn_weights)
 
     # model = SEC_ALSTM(in_chan, 64, num_classes=num_class, hid_rnn=d_model)

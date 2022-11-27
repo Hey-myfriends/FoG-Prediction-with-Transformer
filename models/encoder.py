@@ -18,10 +18,10 @@ import math
 def build_encoder_FoG(d_model=512, nhead=8, num_encoder_layers=6,
                  dim_feedforward=2048, dropout=0.1,
                  activation="relu", normalize_before=False,
-                 return_intermediate=False):
+                 return_intermediate=False, constant_head=0):
     
     encoder_layer = TransformerEncoderLayer(d_model, nhead, dim_feedforward,
-                                            dropout, activation, normalize_before)
+                                            dropout, activation, normalize_before, constant_head)
     encoder_norm = nn.LayerNorm(d_model) if normalize_before else None
     return TransformerEncoder_with_intermid(encoder_layer, num_encoder_layers, norm=encoder_norm, 
                 return_intermidiate=return_intermediate)
@@ -180,11 +180,11 @@ class TransformerDecoder(nn.Module):
 class TransformerEncoderLayer(nn.Module):
 
     def __init__(self, d_model, nhead, dim_feedforward=2048, dropout=0.1,
-                 activation="relu", normalize_before=False):
+                 activation="relu", normalize_before=False, constant_head=0):
         super().__init__()
         self.d_model = d_model
         # self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
-        self.self_attn = MultiHeadAttention_with_constant(d_model, nhead, dropout=dropout)
+        self.self_attn = MultiHeadAttention_with_constant(d_model, nhead, constant_head=constant_head, dropout=dropout)
         # Implementation of Feedforward model
         self.linear1 = nn.Linear(d_model, dim_feedforward)
         self.dropout = nn.Dropout(dropout)
