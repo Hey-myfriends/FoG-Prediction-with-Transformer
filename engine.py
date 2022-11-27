@@ -51,7 +51,7 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
 
     # pdb.set_trace()
     for samples, targets in pbar:
-        samples = samples.transpose(1, 2).to(device)
+        samples = samples.transpose(1, 2).to(device) # [bs, num_chans, L]
         targets = targets["labels"].to(device)
 
         outputs = model(samples)

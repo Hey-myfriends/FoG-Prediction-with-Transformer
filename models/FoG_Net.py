@@ -36,13 +36,13 @@ class FoG_Net(nn.Module):
         self.return_attn_weights = return_attn_weights
 
     def forward(self, x):
-        features = self.backbone(x)
+        # breakpoint()
+        features = self.backbone(x) # [bs, d_model, L]
         features = self.input_proj(features)
 
-        # mask = torch.full().to(features.device)
         bs, c, L = features.shape
         if self.cls_token is not None:
-            cls_token = self.cls_token.repeat(bs, 1, 1).to(features.device) # (bs, L, d_model)
+            cls_token = self.cls_token.repeat(bs, 1, 1).to(features.device) # (bs, d_model, 1)
             features = torch.cat((cls_token, features), dim=2) # TODO
         # pos = self.pos_embed.unsqueeze(0).repeat(bs, 1, 1) # not properly
         pos = self.pos_embed(L+1 if self.cls_type == "cls_token" else L).unsqueeze(0).repeat(bs, 1, 1)

@@ -46,8 +46,8 @@ class TransformerEncoder_with_intermid(nn.Module):
                 mask: Optional[Tensor] = None,
                 src_key_padding_mask: Optional[Tensor] = None,
                 pos: Optional[Tensor] = None):
-        
-        src = src.permute(2, 0, 1)
+        # breakpoint()
+        src = src.permute(2, 0, 1) # [L, bs, d_model] for batch_first default to False
         pos = pos.permute(2, 0, 1) if pos is not None else None
         
         output = src
@@ -183,7 +183,8 @@ class TransformerEncoderLayer(nn.Module):
                  activation="relu", normalize_before=False):
         super().__init__()
         self.d_model = d_model
-        self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
+        # self.self_attn = nn.MultiheadAttention(d_model, nhead, dropout=dropout)
+        self.self_attn = MultiHeadAttention_with_constant(d_model, nhead, dropout=dropout)
         # Implementation of Feedforward model
         self.linear1 = nn.Linear(d_model, dim_feedforward)
         self.dropout = nn.Dropout(dropout)
@@ -237,6 +238,7 @@ class TransformerEncoderLayer(nn.Module):
                 src_key_padding_mask: Optional[Tensor] = None,
                 pos: Optional[Tensor] = None,
                 average_attn_weights = False):
+        # breakpoint()
         if self.normalize_before:
             return self.forward_pre(src, src_mask, src_key_padding_mask, pos, average_attn_weights)
         return self.forward_post(src, src_mask, src_key_padding_mask, pos, average_attn_weights)
@@ -347,7 +349,7 @@ def build_transformer():
     )
 
 class MultiHeadAttention_with_constant(nn.Module):
-    def __init__(self, d_model, nhead, seq_len=32, constant_head=0, dropout=0.1) -> None:
+    def __init__(self, d_model, nhead, seq_len=32, constant_head=0, dropout=0.1, batch_first=False) -> None:
         super().__init__()
         assert d_model % nhead == 0
         assert nhead >= constant_head
@@ -356,18 +358,23 @@ class MultiHeadAttention_with_constant(nn.Module):
         self.nhead = nhead
         self.constant_head = constant_head
         self.seq_len = seq_len
+        self.batch_first = batch_first # False: q, k, v with dim [L, N, d_model]; True: [N, L, d_model]
         self.dropout = nn.Dropout(p=dropout)
         self.linears = nn.ModuleList([nn.Linear(self.d_model, self.d_model) for _ in range(4)])
         self.constant_scores = nn.Parameter(torch.rand(self.constant_head, self.seq_len, self.seq_len)) if 0 < self.constant_head <= self.nhead else None
 
     def forward(self, query, key, value, **kwargs):
-        breakpoint()
-        if self.seq_len != value.shape[1] and self.constant_scores is not None:
-            print("Note: Predefined seq_len not equal to given data, replace seq_len {} with {}.".format(self.seq_len, value.shape[1]))
-            self.seq_len = value.shape[1]
-            self.constant_scores = nn.Parameter(torch.rand(self.constant_head, self.seq_len, self.seq_len)).to(value.device)
+        # breakpoint()
+        if self.batch_first:
+            bs, seq_len, d_model = value.shape
+        else:
+            seq_len, bs, d_model = value.shape
+            query, key, value = query.transpose(0, 1), key.transpose(0, 1), value.transpose(0, 1)
+        if self.seq_len != seq_len and self.constant_scores is not None:
+            print("Note: Predefined seq_len not equal to given data, replace seq_len {} with {}.".format(self.seq_len, seq_len))
+            self.seq_len = seq_len
+            self.constant_scores = nn.Parameter(torch.rand(self.constant_head, self.seq_len, self.seq_len).to(value.device))
         
-        bs = value.shape[0]
         q_nhead, k_nhead, v_nhead = [l(x) for l, x in zip(self.linears, (query, key, value))]
         q_nhead, k_nhead, v_nhead = [x.view(bs, -1, self.nhead, self.d_k).transpose(1, 2) for x in (q_nhead, k_nhead, v_nhead)]
 
@@ -383,10 +390,10 @@ class MultiHeadAttention_with_constant(nn.Module):
             scores = torch.cat((constant_scores, scores), dim=1) if scores is not None else constant_scores
         scores = F.softmax(scores, dim=-1)
         scores = self.dropout(scores)
-        results = torch.matmul(v_nhead, scores)
+        results = torch.matmul(scores, v_nhead)
         results = results.transpose(1, 2).contiguous().view(bs, -1, self.nhead*self.d_k) # concatenate all heads
         results = self.linears[-1](results)
-        return results, scores
+        return results if self.batch_first else results.transpose(0, 1), scores
 
 def _get_activation_fn(activation):
     """Return an activation function given a string"""
@@ -403,7 +410,7 @@ if __name__ == "__main__":
     # model = build_transformer().to(device)
     # print(model)
     
-    src = torch.rand(4, 256, 17).to(device)
+    src = torch.rand(4, 256, 17).to(device) # [L, bs, d_model]
     mask = torch.full((4, 17), False).to(device)
     query_embed = nn.Embedding(17, 256).to(device)
     pos_embed = torch.rand(4, 256, 17).to(device)
